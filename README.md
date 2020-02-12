@@ -247,8 +247,9 @@ Just `3 + '3'` yields `'33'` because here JavaScript uses the "I can combine tex
 ### 2.10. arrays
 Section 8 will explain more. [link](#8-arrays--iterables)
 ```js
-newArray = [0, 1, 2]
-newArray.push("4")
+newArray = [1, 2, 3]；
+newArray.push("4")；
+console.log(newArray[0]);
 ```
 
 ### object 
