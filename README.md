@@ -1,41 +1,42 @@
 # JavaScript
 
+
 - [1. Getting Started](#1-getting-started)
 - [2. Language Basics, Base Syntax](#2-language-basics-base-syntax)
-- [3. Efficient Development & Debugging](#3-efficient-development--debugging)
-- [4. Control Structures (if, Loops, Error…)](#4-control-structures-if-loops-error)
-- [5. Behind the Scenes of JS  The (Weird) Past (ES3, ES5) & Present (ES6+)](#5-behind-the-scenes-of-js--the-weird-past-es3-es5--present-es6)
-- [6. A Closer Look at Functions](#6-a-closer-look-at-functions)
-- [7. DOM Basics](#7-dom-basics)
-- [8. Arrays & Iterables](#8-arrays--iterables)
-- [9. Objects](#9-objects)
-- [10. Classes & Object-oriented Programming (OOP)](#10-classes--object-oriented-programming-oop)
-- [11. Constructor Functions & Prototypes](#11-constructor-functions--prototypes)
-- [12. Practice: OOP & Classes](#12-practice-oop--classes)
-- [13. More about DOM & Browser APIs](#13-more-about-dom--browser-apis)
-- [14. Events](#14-events)
-- [15. Advanced Function Concepts](#15-advanced-function-concepts)
-- [16. More about Numbers & Strings](#16-more-about-numbers--strings)
-- [17. Asynchronous/Async JS: Promises & Callbacks](#17-asynchronousasync-js-promises--callbacks)
-- [18. Background Http (Ajax)](#18-background-http-ajax)
-- [19. rd Party Libraries](#19-rd-party-libraries)
-- [20. JavaScript Modules](#20-javascript-modules)
-- [21. Tooling (Webpack, Babel, …)](#21-tooling-webpack-babel-)
-- [22. Working with Browser Storage](#22-working-with-browser-storage)
-- [23. Browser Support](#23-browser-support)
-- [24. Peactice](#24-peactice)
-- [25. JavaScript Frameworks](#25-javascript-frameworks)
-- [26. Meta-programming: Symbols, Iterators, Generators, Reflect API & Proxy API](#26-meta-programming-symbols-iterators-generators-reflect-api--proxy-api)
-- [27. NodeJS Introduction](#27-nodejs-introduction)
-- [28. Security](#28-security)
-- [29. Deployment](#29-deployment)
-- [30. Performance Optimizations & Memory Leaks](#30-performance-optimizations--memory-leaks)
-- [31. Testing](#31-testing)
-- [32. Bonus: Programming Paradigms (Procedural vs Object Oriented vs Functional)](#32-bonus-programming-paradigms-procedural-vs-object-oriented-vs-functional)
-- [33. Bonus: Data Structures & Algorithms Introduction](#33-bonus-data-structures--algorithms-introduction)
-- [34. Bonus: TypeScript Introduction](#34-bonus-typescript-introduction)
-- [35. Bonus: Web Components](#35-bonus-web-components)
-- [36. Roundup & Next Steps](#36-roundup--next-steps)autoauto
+- [3. Control Structures (if, Loops, Error…)](#3-control-structures-if-loops-error)
+- [4. "Behind the Scenes of JS  The (Weird) Past (ES3, ES5) & Present (ES6+)"](#4-behind-the-scenes-of-js--the-weird-past-es3-es5--present-es6)
+- [5. A Closer Look at Functions](#5-a-closer-look-at-functions)
+- [6. DOM Basics](#6-dom-basics)
+- [7. Arrays & Iterables](#7-arrays--iterables)
+- [8. Objects](#8-objects)
+- [9. Classes & Object-oriented Programming (OOP)](#9-classes--object-oriented-programming-oop)
+- [10. Constructor Functions & Prototypes](#10-constructor-functions--prototypes)
+- [11. Practice: OOP & Classes](#11-practice-oop--classes)
+- [12. More about DOM & Browser APIs](#12-more-about-dom--browser-apis)
+- [13. Events](#13-events)
+- [14. Advanced Function Concepts](#14-advanced-function-concepts)
+- [15. More about Numbers & Strings](#15-more-about-numbers--strings)
+- [16. Asynchronous/Async JS: Promises & Callbacks](#16-asynchronousasync-js-promises--callbacks)
+- [17. Background Http (Ajax)](#17-background-http-ajax)
+- [18. rd Party Libraries](#18-rd-party-libraries)
+- [19. JavaScript Modules](#19-javascript-modules)
+- [20. Tooling (Webpack, Babel, …)](#20-tooling-webpack-babel-)
+- [21. Working with Browser Storage](#21-working-with-browser-storage)
+- [22. Browser Support](#22-browser-support)
+- [23. Peactice](#23-peactice)
+- [24. JavaScript Frameworks](#24-javascript-frameworks)
+- [25. Meta-programming: Symbols, Iterators, Generators, Reflect API & Proxy API](#25-meta-programming-symbols-iterators-generators-reflect-api--proxy-api)
+- [26. NodeJS Introduction](#26-nodejs-introduction)
+- [27. Security](#27-security)
+- [28. Deployment](#28-deployment)
+- [29. Performance Optimizations & Memory Leaks](#29-performance-optimizations--memory-leaks)
+- [30. Testing](#30-testing)
+- [31. Bonus: Programming Paradigms (Procedural vs Object Oriented vs Functional)](#31-bonus-programming-paradigms-procedural-vs-object-oriented-vs-functional)
+- [32. Bonus: Data Structures & Algorithms Introduction](#32-bonus-data-structures--algorithms-introduction)
+- [33. Bonus: TypeScript Introduction](#33-bonus-typescript-introduction)
+- [34. Bonus: Web Components](#34-bonus-web-components)
+- [35. Roundup & Next Steps](#35-roundup--next-steps)
+- [36. Efficient Development & Debugging](#36-efficient-development--debugging)
 
 
 
@@ -199,18 +200,18 @@ It **creates a new variable on a different scope** - this variables does not ove
 When referring to `userName` inside of the `greetUser` function we now **always refer to the local, shadowed variable**. Only **if no such local variable existed, JavaScript would fall back to the global variable**.
 
 ### 2.9. Converting Data Types
-change the string to number.
+**change the string to number.**
 ```js
 parseInt(10);
 parseFloat(10.1);
 ```
-also work as 
+**also work as**
 
 ```js
 result + +userInput.value = result + parseInt(userInput.value)
 ```
 
-change the number to string.
+**change the number to string.**
 ```js
 result.toString()
 ```
@@ -246,48 +247,86 @@ Just `3 + '3'` yields `'33'` because here JavaScript uses the "I can combine tex
 
 ### 2.10. arrays
 Section 8 will explain more. [link](#8-arrays--iterables)
+Array: A list of data of any kind.
 ```js
 newArray = [1, 2, 3]；
 newArray.push("4")；
 console.log(newArray[0]);
 ```
 
-### object 
+### 2.11. object 
 Section 9 will explain more. [link](#9-objects)
+object: grouped data, structured in key-value pairs.
+
+```js
+newObject = {
+  name: 'max';
+  age: 27;
+}；
+console.log(newObject.name);
+```
+### 2.12. undefined, null & NaN
+![find](noteimgs/section1f.png)
+
+`undefined` & `null` - whilst the two values are similar, they're not equal. undefined is a special type and the default value for undefined variables, null is actually of type object and never a default value of anything.
+
+### 2.13. typeof
+
+`typeof [1, 2, 3]` is an **Object**, or and an **Array**  
+`typeof undefined` is **undefined**  
+`typeof null` is **Object**  
+`typeof NaN` is **number**
+
+### 2.14. import JS file with "defer" & "async"
+only for external file
+
+![find](noteimgs/section1g.png)
+![find](noteimgs/section1h.png)
+![find](noteimgs/section1i.png)
 
 
 
-## 3. Efficient Development & Debugging
-## 4. Control Structures (if, Loops, Error…)
-## 5. Behind the Scenes of JS  The (Weird) Past (ES3, ES5) & Present (ES6+)
-## 6. A Closer Look at Functions
-## 7. DOM Basics
-## 8. Arrays & Iterables
-## 9. Objects
-## 10. Classes & Object-oriented Programming (OOP)
-## 11. Constructor Functions & Prototypes
-## 12. Practice: OOP & Classes
-## 13. More about DOM & Browser APIs
-## 14. Events
-## 15. Advanced Function Concepts
-## 16. More about Numbers & Strings
-## 17. Asynchronous/Async JS: Promises & Callbacks
-## 18. Background Http (Ajax)
-## 19. rd Party Libraries
-## 20. JavaScript Modules
-## 21. Tooling (Webpack, Babel, …)
-## 22. Working with Browser Storage
-## 23. Browser Support
-## 24. Peactice
-## 25. JavaScript Frameworks
-## 26. Meta-programming: Symbols, Iterators, Generators, Reflect API & Proxy API
-## 27. NodeJS Introduction
-## 28. Security
-## 29. Deployment
-## 30. Performance Optimizations & Memory Leaks
-## 31. Testing
-## 32. Bonus: Programming Paradigms (Procedural vs Object Oriented vs Functional)
-## 33. Bonus: Data Structures & Algorithms Introduction
-## 34. Bonus: TypeScript Introduction
-## 35. Bonus: Web Components
-## 36. Roundup & Next Steps
+
+## 3. Control Structures (if, Loops, Error…)
+## 4. Behind the Scenes of JS  The (Weird) Past (ES3, ES5) & Present (ES6+)
+## 5. A Closer Look at Functions
+## 6. DOM Basics
+## 7. Arrays & Iterables
+## 8. Objects
+## 9. Classes & Object-oriented Programming (OOP)
+## 10. Constructor Functions & Prototypes
+## 11. Practice: OOP & Classes
+## 12. More about DOM & Browser APIs
+## 13. Events
+## 14. Advanced Function Concepts
+## 15. More about Numbers & Strings
+## 16. Asynchronous/Async JS: Promises & Callbacks
+## 17. Background Http (Ajax)
+## 18. rd Party Libraries
+## 19. JavaScript Modules
+## 20. Tooling (Webpack, Babel, …)
+## 21. Working with Browser Storage
+## 22. Browser Support
+## 23. Peactice
+## 24. JavaScript Frameworks
+## 25. Meta-programming: Symbols, Iterators, Generators, Reflect API & Proxy API
+## 26. NodeJS Introduction
+## 27. Security
+## 28. Deployment
+## 29. Performance Optimizations & Memory Leaks
+## 30. Testing
+## 31. Bonus: Programming Paradigms (Procedural vs Object Oriented vs Functional)
+## 32. Bonus: Data Structures & Algorithms Introduction
+## 33. Bonus: TypeScript Introduction
+## 34. Bonus: Web Components
+## 35. Roundup & Next Steps
+## 36. Efficient Development & Debugging
+### Overview
+### IDE
+color,theme, Icon, extensions,
+
+### Shortcuts
+Toggle bolck comment: `option + shift + a` ;  
+Toggle line comment: `cmd + /`;  
+Add Selection To Next Find Match: `cmd+d`;  
+Add Selection all Match: `cmd + shift + L`;  
