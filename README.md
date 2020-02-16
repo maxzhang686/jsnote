@@ -322,11 +322,34 @@ only for external file
 ## 35. Roundup & Next Steps
 ## 36. Efficient Development & Debugging
 ### Overview
+![find](noteimgs/section36a.png)
 ### IDE
 color,theme, Icon, extensions,
 
-### Shortcuts
+**Shortcuts**
 Toggle bolck comment: `option + shift + a` ;  
 Toggle line comment: `cmd + /`;  
 Add Selection To Next Find Match: `cmd+d`;  
 Add Selection all Match: `cmd + shift + L`;  
+move line: `option + top/buttom`;  
+copy line: `option + shift + top/buttom`;  
+delete whole line: `shift + cmd + K`
+
+
+**auto-completion**
+
+open the suggestion: `control + space`;
+hints: `shift + cmd + space`;
+
+### Find Help
+[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+[ECMAScript](https://www.ecma-international.org/publications/standards/Ecma-262.htm)
+
+
+
+### debug
+`console.log()`,
+ `breakpoint` with IDE and chrome.
+
+
