@@ -45,13 +45,22 @@
 
 
 ## 2. Language Basics, Base Syntax
+#
 ### 2.1. Variables & Constants
 ![find](noteimgs/section1a.jpg)
 
  variable: A data container where the data can be changed during program execution.
 
+#
 ### 2.2. Declaring & Defining
 ![find](noteimgs/section1b.png)
+
+**set up as a global value:**
+it's also quite common to use all uppercase characters there and separate words with an underscore, to make it really clear that this is a global value which you just hardcoded into the code.
+```js
+const ATTACK_VALUE = 10;
+```
+
 
 ### 2.3. Operators
 ![find](noteimgs/section1c.png)
@@ -63,7 +72,7 @@ number += newNumber
 number = number + 1; //same as:
 numebr++;
 ```
-
+#
 ### 2.4. Some data types 
 ![find](noteimgs/section1d.png)
 
@@ -79,7 +88,7 @@ string Escape notation.[link](https://developer.mozilla.org/en-US/docs/Web/JavaS
 * css: `white-space: pre`.
 
 
-
+#
 ### 2.5. Function
 ![find](noteimgs/section1e.png)
 
@@ -104,6 +113,7 @@ alert(), addEventListener(),
 
 * Most importantly: A function is not "an alternative to a variable". It supports a totally different use-case. But it's also worth pointing out that variables are NOT restricted to storing numbers or strings.
 
+#
 ### 2.6. "Indirect" vs "Direct" Function Execution
 
 <!-- scope and closures!!!(other section explain more) -->
@@ -148,6 +158,7 @@ Because you just throw the name of the function in there but **you don't give an
 
 
 
+#
 ### 2.7. return
 ```js
 function functionName(parameter1, parameter2){
@@ -158,6 +169,7 @@ function functionName(parameter1, parameter2){
 Any code that have write after `return`, won't execute.  
 
 
+#
 ### 2.8. scope and closures
 
 You can't use local/block-scope variables(= declared inside of functions) outside of them.
@@ -199,6 +211,7 @@ It **creates a new variable on a different scope** - this variables does not ove
 
 When referring to `userName` inside of the `greetUser` function we now **always refer to the local, shadowed variable**. Only **if no such local variable existed, JavaScript would fall back to the global variable**.
 
+#
 ### 2.9. Converting Data Types
 **change the string to number.**
 ```js
@@ -245,6 +258,7 @@ Similarly, these operations also all work:
 Just `3 + '3'` yields `'33'` because here JavaScript uses the "I can combine text" mode of the + operator and generates a string instead of a number.
 
 
+#
 ### 2.10. arrays
 Section 8 will explain more. [link](#8-arrays--iterables)
 Array: A list of data of any kind.
@@ -254,6 +268,7 @@ newArray.push("4")；
 console.log(newArray[0]);
 ```
 
+#
 ### 2.11. object 
 Section 9 will explain more. [link](#9-objects)
 object: grouped data, structured in key-value pairs.
@@ -265,11 +280,13 @@ newObject = {
 }；
 console.log(newObject.name);
 ```
+#
 ### 2.12. undefined, null & NaN
 ![find](noteimgs/section1f.png)
 
 `undefined` & `null` - whilst the two values are similar, they're not equal. undefined is a special type and the default value for undefined variables, null is actually of type object and never a default value of anything.
 
+#
 ### 2.13. typeof
 
 `typeof [1, 2, 3]` is an **Object**, or and an **Array**  
@@ -277,6 +294,7 @@ console.log(newObject.name);
 `typeof null` is **Object**  
 `typeof NaN` is **number**
 
+#
 ### 2.14. import JS file with "defer" & "async"
 only for external file
 
@@ -284,10 +302,117 @@ only for external file
 ![find](noteimgs/section1h.png)
 ![find](noteimgs/section1i.png)
 
-
-
-
 ## 3. Control Structures (if, Loops, Error…)
+- conditional Statements(if) & Expressions
+- Boolean Values & Operators
+- Loops in JavaScript
+- Error Handing
+
+
+#
+### 3.1. conditional code
+
+![find](noteimgs/section3a.png)
+
+Understanding the "Condition"
+Always keep in mind that `condition` in
+
+```js
+if (condition) { ... }
+```
+simply has to be a **boolean value**.
+
+Often, you'll generate such a boolean value with the help of `===`, `>`, `<` etc. **All these operators** yield boolean values (without changing the variables/ values you're using them on).
+
+Since `if` only wants a boolean, you of course **don't have to use such an operator**. If you already got a variable that holds a boolean, you can use it without any extra operator.
+
+Example:
+```js
+const isLoggedIn = true;
+if (isLoggedIn) {
+    // This code will execute because isLoggedIn is true => A valid condition
+}
+```
+You could write
+```js
+const isLoggedIn = true;
+if (isLoggedIn === true) {
+    ...
+}
+```
+but that would be **redundant**. You'd generate another new boolean where you already got one.
+
+You can use the ! operator to negate ("invert") the value:
+```js
+const isLoggedIn = true;
+if (!isLoggedIn) {
+  // This code will NOT execute because isLoggedIn is true but ! inverts it (in this check)
+} else {
+  // This would execute because !isLoggedIn yields false => else block executes
+}
+```
+Again, that would be similar to:
+```js
+const isLoggedIn = true;
+if (isLoggedIn !== true) {
+    // This would NOT execute
+} else {
+    // This would execute because isLoggedIn is true and hence !== true yields false
+}
+```
+But again, that would be redundant.
+
+**More on Text (String) Comparisons**
+Strings can also be compared with greater than (`>`) or lower/ smaller than (`<`) operators.
+
+JavaScript compares strings based on standard lexicographical ordering, using Unicode values.
+
+That means that `b` is greater than `a` for example.
+
+JavaScript always looks at the first character and only considers other characters if the first character is similar. In addition, capital characters are considered to be smaller than lowercase characters.
+
+See these examples:
+```js
+'ab' > 'aa' // true
+'a' > 'B' // true
+'a' > 'b' // false
+```
+
+#
+### if statements
+Example: 
+```js
+  if (x > 50 && ( x = 30 || x = 20) {
+    /* do the right thing */
+  } else if (x > 5) {
+    /* do the right thing */
+  } else {
+    /* do the right thing */
+  }
+```
+* compare object and array
+```js
+ArrayOne = [1, 2, 3];
+ArrayTwo = [1, 2, 3];
+ArrayOne == ArrayTwo; //return false
+```
+
+
+#
+### Operator Precedence
+![find](noteimgs/section3b.png)
+
+[Operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
+
+#
+### Falsy and Truthy
+
+![find](noteimgs/section3c.png)
+
+Falsy and Truthy value
+![find](noteimgs/section3d.png)
+
+
 ## 4. Behind the Scenes of JS  The (Weird) Past (ES3, ES5) & Present (ES6+)
 ## 5. A Closer Look at Functions
 ## 6. DOM Basics
@@ -321,9 +446,9 @@ only for external file
 ## 34. Bonus: Web Components
 ## 35. Roundup & Next Steps
 ## 36. Efficient Development & Debugging
-### Overview
+### 36.1. Overview
 ![find](noteimgs/section36a.png)
-### IDE
+### 36.2. IDE
 color,theme, Icon, extensions,
 
 **Shortcuts**
@@ -341,14 +466,14 @@ delete whole line: `shift + cmd + K`
 open the suggestion: `control + space`;
 hints: `shift + cmd + space`;
 
-### Find Help
+### 36.3. Find Help
 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 [ECMAScript](https://www.ecma-international.org/publications/standards/Ecma-262.htm)
 
 
 
-### debug
+### 36.4. debug
 `console.log()`,
  `breakpoint` with IDE and chrome.
 
