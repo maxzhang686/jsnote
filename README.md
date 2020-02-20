@@ -551,7 +551,17 @@ for (const logEntry of battleLog){
 
 ```
 
-
+#### 3.10.3. for-in loop
+```js
+let i = 1;
+for (const logEntry of battleLog) {
+  console.log(`Round ${i}`);
+  for (const key in logEntry) {
+    console.log(`${key} : ${logEntry[key]}`)
+  }
+  i++
+}
+```
 
 ## 4. Behind the Scenes of JS  The (Weird) Past (ES3, ES5) & Present (ES6+)
 ## 5. A Closer Look at Functions
