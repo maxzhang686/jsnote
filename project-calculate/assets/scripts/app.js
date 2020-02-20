@@ -47,7 +47,7 @@ function calculateResult(calculationType) {
   //   calculationType === 'MULTIPLY' ||
   //   calculationType === 'DIVIDE'
   // ) {
-  
+
   const initialResult = currentResult;
   let mathOperator;
   if (calculationType === 'ADD') {

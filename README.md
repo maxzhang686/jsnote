@@ -109,7 +109,7 @@ functionName()
 ```
 
 * Build-in function
-alert(), addEventListener(), 
+alert(), addEventListener(), prompt()
 
 * Most importantly: A function is not "an alternative to a variable". It supports a totally different use-case. But it's also worth pointing out that variables are NOT restricted to storing numbers or strings.
 
@@ -227,6 +227,11 @@ result + +userInput.value = result + parseInt(userInput.value)
 **change the number to string.**
 ```js
 result.toString()
+```
+
+**check is it a number.**
+```js
+isNan(inputNumber)
 ```
 
 You saw the example with a number and a "text number" being added
@@ -379,7 +384,7 @@ See these examples:
 ```
 
 #
-### if statements
+### 3.2. if statements
 Example: 
 ```js
   if (x > 50 && ( x = 30 || x = 20) {
@@ -399,18 +404,132 @@ ArrayOne == ArrayTwo; //return false
 
 
 #
-### Operator Precedence
+### 3.3. Operator Precedence
 ![find](noteimgs/section3b.png)
 
 [Operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
 
 #
-### Falsy and Truthy
+### 3.4. Falsy and Truthy
 
 ![find](noteimgs/section3c.png)
 
-Falsy and Truthy value
+Falsy and Truthy value (**Print out**)
 ![find](noteimgs/section3d.png)
+
+#
+### 3.5. Ternary Operator
+Example:
+
+```js
+  let maxDamage;
+  let logEvent;
+  if (mode === MODE_ATTACK) {
+    maxDamage = ATTACK_VALUE;
+    logEvent = LOG_EVENT_PLAYER_ATTACK;
+  } else if (mode === MODE_STRONG_ATTACK) {
+    maxDamage = STRONG_ATTACK_VALUE;
+    logEvent = LOG_EVENT_PLAYER_STRONG_ATTACK;
+  }
+```
+```js
+const maxDamage = mode === MODE_ATTACK ? ATTACK_VALUE : STRONG_ATTACK_VALUE;
+const logEvent = mode === MODE_ATTACK ? LOG_EVENT_PLAYER_ATTACK : LOG_EVENT_PLAYER_STRONG_ATTACK;
+```
+#
+### 3.6. Statements vs Expressions 
+
+#
+### 3.7. "Tricks" shorthands
+![find](noteimgs/section3e.png)
+* change example img to code later:
+![find](noteimgs/section3f.png)
+![find](noteimgs/section3g.png)
+![find](noteimgs/section3h.png)
+
+### 3.8. locical Operators
+(**Print out**)
+
+As a **reference** which you can come back to (or print out), here's a **quick summary** of how **logical operators** and **comparison operators** behave in JavaScript:
+```js
+const userName = 'Max';
+const altName = '';
+console.log(userName === 'Max'); // generates and prints a boolean => true
+console.log(userName); // wasn't touched, still is a string => 'Max'
+ 
+console.log(userName || null); // userName is truthy and therefore returned by || => 'Max'
+console.log(altName || 'Max'); // altName is falsy (empty string), hence 'Max' is returned => 'Max'
+console.log(altName || ''); // both altName and '' are falsy but if the first operand is falsy, the second one is always returned => ''
+console.log(altName || null || 'Anna'); // altName and null are falsy, 'Anna' is returned => 'Anna'
+ 
+console.log(userName && 'Anna'); // userName is truthy, hence second (!) value is returned => 'Anna'
+console.log(altName && 'Anna'); // altName is falsy, hence first value is returned => ''
+console.log(userName && ''); // userName is truthy, hence second value is returned => ''
+```
+**Always keep in mind: NO** operator (neither `===`, `>` etc. nor `&&` or `||`) changes the variable you might be using in the comparison. In the above examples, the values stored in `userName` and `altName` **are NEVER changed**.
+
+`===`, `>` etc. just **generate new boolean values** which are used in the comparison. `||` and `&&` **generate NO booleans**, they just treat the v**alues before and after them as conditions** (which therefore need to yield boolean values and are coerced to booleans if required).
+
+Because of the above-described behaviors, you often use `||` in JavaScript to assign default/ fallback values to variables/ constants:
+```js
+const enteredValue = ''; // let's assume this is set based on some input provided by the user, therefore it might be an empty string
+ 
+const userName = enteredValue || 'PLACEHOLDER'; // will assign 'PLACEHOLDER' if enteredValue is an empty string
+```
+
+
+### 3.9. Switch 
+Switch with greater than ect.(link)[https://stackoverflow.com/questions/32576618/switch-statement-to-compare-values-greater-or-less-than-a-number/32576647]
+
+example:
+```js
+  let logEntry = {
+    event: ev,
+    value: val,
+    finalMonsterHealth: monsterHealth,
+    finalPlayerHealth: playerHealth
+  };
+  if (ev === LOG_EVENT_PLAYER_ATTACK) {
+    logEntry.target = 'MONSTER';
+  } else if (ev === LOG_EVENT_PLAYER_STRONG_ATTACK) {
+    logEntry = {
+      event: ev,
+      value: val,
+      target: 'MONSTER',
+      finalMonsterHealth: monsterHealth,
+      finalPlayerHealth: playerHealth
+    };
+  } else if (ev === LOG_EVENT_MONSTER_ATTACK) {
+    logEntry = {
+      event: ev,
+      value: val,
+      target: 'PLAYER',
+      finalMonsterHealth: monsterHealth,
+      finalPlayerHealth: playerHealth
+    };
+```
+```js
+  switch (ev) {
+    case LOG_EVENT_PLAYER_ATTACK:
+      logEntry.target = 'MONSTER';
+    break;
+    case LOG_EVENT_MONSTER_ATTACK:
+      logEntry = {
+        event: ev,
+        value: val,
+        target: 'MONSTER',
+        finalMonsterHealth: monsterHealth,
+        finalPlayerHealth: playerHealth
+      };
+    break;
+    default:
+      logEntry = { };
+    break;
+ }
+```
+
+### 3.10. Loop
+
 
 
 ## 4. Behind the Scenes of JS  The (Weird) Past (ES3, ES5) & Present (ES6+)
