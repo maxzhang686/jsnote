@@ -1,6 +1,5 @@
 # JavaScript
 
-
 - [1. Getting Started](#1-getting-started)
 - [2. Language Basics, Base Syntax](#2-language-basics-base-syntax)
 - [3. Control Structures (if, Loops, Error…)](#3-control-structures-if-loops-error)
@@ -38,18 +37,15 @@
 - [35. Roundup & Next Steps](#35-roundup--next-steps)
 - [36. Efficient Development & Debugging](#36-efficient-development--debugging)
 
-
-
 ## 1. Getting Started
 ### 1.1. Dynamic vs Weakly Typed Languages
-
 
 ## 2. Language Basics, Base Syntax
 #
 ### 2.1. Variables & Constants
 ![find](noteimgs/section1a.jpg)
 
- variable: A data container where the data can be changed during program execution.
+variable: A data container where the data can be changed during program execution.
 
 #
 ### 2.2. Declaring & Defining
@@ -402,7 +398,6 @@ ArrayTwo = [1, 2, 3];
 ArrayOne == ArrayTwo; //return false
 ```
 
-
 #
 ### 3.3. Operator Precedence
 ![find](noteimgs/section3b.png)
@@ -518,7 +513,7 @@ example:
         event: ev,
         value: val,
         target: 'MONSTER',
-        finalMonsterHealth: monsterHealth,
+        finalMonsterHealth: mon sterHealth,
         finalPlayerHealth: playerHealth
       };
     break;
@@ -529,6 +524,32 @@ example:
 ```
 
 ### 3.10. Loop
+![find](noteimgs/section3i.png)
+
+#### 3.10.1. for loop
+```js
+for (let i = 0; i < 3; i++) {
+  console.log(i)；
+}
+
+for (let i = 10; i > 0) {
+  i--;//from 9 to 0
+  console.log(i);
+  //i--; from 10 to 1
+}
+```
+#### 3.10.2. for-of loop
+
+```js
+for (let i = 0; i < battlelog.length, i++) {
+  console.log(battlelog[i]);
+}
+
+for (const logEntry of battleLog){
+  console.log(logEntry);
+}
+
+```
 
 
 
