@@ -220,6 +220,8 @@ parseFloat(10.1);
 result + +userInput.value = result + parseInt(userInput.value)
 ```
 
+if the number's length is more than 16, it wouldn't work. try use BigInt().
+
 **change the number to string.**
 ```js
 result.toString()
@@ -439,7 +441,11 @@ const logEvent = mode === MODE_ATTACK ? LOG_EVENT_PLAYER_ATTACK : LOG_EVENT_PLAY
 ![find](noteimgs/section3e.png)
 * change example img to code later:
 ![find](noteimgs/section3f.png)
+
+---
 ![find](noteimgs/section3g.png)
+
+---
 ![find](noteimgs/section3h.png)
 
 ### 3.8. locical Operators
@@ -473,7 +479,7 @@ const userName = enteredValue || 'PLACEHOLDER'; // will assign 'PLACEHOLDER' if 
 ```
 
 
-### 3.9. Switch 
+### 3.9. Switch with "break"
 Switch with greater than ect.(link)[https://stackoverflow.com/questions/32576618/switch-statement-to-compare-values-greater-or-less-than-a-number/32576647]
 
 example:
@@ -486,22 +492,15 @@ example:
   };
   if (ev === LOG_EVENT_PLAYER_ATTACK) {
     logEntry.target = 'MONSTER';
-  } else if (ev === LOG_EVENT_PLAYER_STRONG_ATTACK) {
-    logEntry = {
-      event: ev,
-      value: val,
-      target: 'MONSTER',
-      finalMonsterHealth: monsterHealth,
-      finalPlayerHealth: playerHealth
-    };
   } else if (ev === LOG_EVENT_MONSTER_ATTACK) {
-    logEntry = {
-      event: ev,
-      value: val,
-      target: 'PLAYER',
-      finalMonsterHealth: monsterHealth,
-      finalPlayerHealth: playerHealth
-    };
+      logEntry = {
+        event: ev,
+        value: val,
+        target: 'PLAYER',
+        finalMonsterHealth: monsterHealth,
+        finalPlayerHealth: playerHealth
+      };
+    }
 ```
 ```js
   switch (ev) {
@@ -561,6 +560,93 @@ for (const logEntry of battleLog) {
   }
   i++
 }
+```
+#### 3.10.4. while loops 
+```js
+let randomNumber = [];
+let finished = false;
+
+while (!finished) {
+  let number1 = Math.random();
+  randomNumber.push(number1);
+  if (number1 > 0.8) {
+    finished = true;
+  }
+}
+console.log(randomNumber);
+```
+**do-while**
+ ```js
+let j = 3;
+while (j < 3) {
+  console.log(j);
+  j++;
+}
+//no output
+```
+```js
+let j = 3;
+do {
+  console.log(j);
+  j++;
+} while (j < 3) 
+//output: 3
+ ```
+
+### 3.11. break and continue in Loop
+
+**Break** indeed does stop the entire loop execution immediately and moves on to code execution after the loop.  
+
+**Continuew** The current iteration is stopped/ skipped and the next iteration (of the same loop) starts.
+```js
+for (let i = 0; i < 5; i++ ) {
+  console.log(i);
+}
+//output: 0, 1, 2, 3, 4.
+```
+```js
+for (let i = 0; i < 5; i++ ) {
+  if (i === 3){
+    break;
+  }
+  console.log(i);
+}
+//output: 0, 1, 2.
+```
+```js
+for (let i = 0; i < 5; i++ ) {
+  if ( i === 3 ) {
+    continue;
+  }
+  console.log(i);
+}
+//output: 0, 1, 2, 4.
+```
+**Labeled Statements**
+```js
+let j = 0;
+outerWhile: do {
+  console.log("Outer: ", j);
+  innerFor: for (let k = 0; k < 5; k++) {
+    if (k === 3) {
+      continue outerWhile; //infinite loop, dangerous!
+    }
+    console.log("Inner", k);
+  }
+  j++;
+} while (j < 3);
+```
+### try catch
+![find](noteimgs/section3j.png)
+```js
+try { 
+
+} catch (error) {
+
+} finally {
+
+}
+
 ```
 
 ## 4. Behind the Scenes of JS  The (Weird) Past (ES3, ES5) & Present (ES6+)
