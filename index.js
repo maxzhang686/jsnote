@@ -1,4 +1,9 @@
-var favouriteFood = "grapes";
+/* 
+```js
+
+```
+ */
+/* var favouriteFood = "grapes";
 
 function foodThoughts() {
   console.log("Original fav food: " + favouriteFood);
@@ -9,15 +14,30 @@ function foodThoughts() {
 }
 
 foodThoughts();
+//what tis the output?
+ */
 
-let j = 0;
-outerWhile: do {
-  console.log("Outer: ", j);
-  innerFor: for (let k = 0; k < 5; k++) {
-    if (k === 3) {
-      continue outerWhile; //infinite loop, dangerous!
-    }
-    console.log("Inner", k);
-  }
-  j++;
-} while (j < 3);
+
+/*  
+var name = "Max";
+
+if (name === "Max") {
+  let hobbies = ["Sports", "Cooking"];
+  console.log(hobbies);
+}
+
+function greet( ) {
+  var age = 30;
+  var name = "ivy";
+  console.log(name, age); 
+}
+greet();
+
+console.log(name, hobbies);
+ */
+
+'use strict';
+
+console.log(name);
+var name = "Max";
+

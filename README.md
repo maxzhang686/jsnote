@@ -89,8 +89,12 @@ string Escape notation.[link](https://developer.mozilla.org/en-US/docs/Web/JavaS
 ![find](noteimgs/section1e.png)
 
 A function defines code which doesn't execute right away but which can be executed multiple times by calling the function.  
+
 A function is "code on demand".  
+
 Function parameters are Data that can be provided to the function (input) - available only inside of the function, like local variables.
+
+**Most importantly**: A function is not "an alternative to a variable". It supports a totally different use-case. But it's also worth pointing out that variables are NOT restricted to storing numbers or strings.
 
 defines
 ```js
@@ -107,7 +111,8 @@ functionName()
 * Build-in function
 alert(), addEventListener(), prompt()
 
-* Most importantly: A function is not "an alternative to a variable". It supports a totally different use-case. But it's also worth pointing out that variables are NOT restricted to storing numbers or strings.
+  
+
 
 #
 ### 2.6. "Indirect" vs "Direct" Function Execution
@@ -650,6 +655,73 @@ try {
 ```
 
 ## 4. Behind the Scenes of JS  The (Weird) Past (ES3, ES5) & Present (ES6+)
+
+- ES5 vs ES6+ Syntax
+- How JavaScript Works
+- The Weird Parts
+
+### var let const 
+
+`var` has global/function(local) scope, `let` and `const` have block scope.
+```js
+var name = "Max";
+var name = "Ivy";
+
+console.log(name); 
+//Output: Ivy
+//This will actually not throw an error.
+
+if (name === "Ivy") {
+  var hobbies = ["Cooking", "Coding"]; 
+  let hobbies = ["Cooking", "Coding"];
+}
+console.log(hobbies);
+//throw an error whhile using let.
+```
+
+In the new project, **do not** use `var` anymore.
+
+### "Hoisting" 
+
+```js
+console.log(name);
+var name = "Max";
+//output: undefind
+```
+
+```js
+console.log(name);
+let name = "Max"; 
+//error: ReferenceError. Cannot access 'name' before initialization.
+```
+
+### Strict Mode
+
+```js
+'use strict'; //first line
+```
+
+### Parsed & Compiled
+
+**heap and stack**
+
+**primitive vs reference Values**
+
+**Garbage collection & Memory Management**
+
+Very important this section. Need to come back and really understand what they are.
+More on JavaScript Memory Management (Garbage Collection):   
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
+
+V8's Garbage Collection Logic:  
+https://v8.dev/blog/free-garbage-collection
+
+V8's JavaScript Engine in Great Detail:   
+https://hackernoon.com/javascript-v8-engine-explained-3f940148d4ef
+
+More on Primitive vs Reference Values:   
+https://academind.com/learn/javascript/reference-vs-primitive-values/
+
 ## 5. A Closer Look at Functions
 ## 6. DOM Basics
 ## 7. Arrays & Iterables
