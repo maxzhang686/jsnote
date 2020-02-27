@@ -723,6 +723,8 @@ More on Primitive vs Reference Values:
 https://academind.com/learn/javascript/reference-vs-primitive-values/
 
 ## 5. A Closer Look at Functions
+
+
 ## 6. DOM Basics
 ## 7. Arrays & Iterables
 ## 8. Objects
