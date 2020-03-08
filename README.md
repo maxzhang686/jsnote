@@ -237,6 +237,14 @@ result.toString()
 isNan(inputNumber)
 ```
 
+
+**font setting**
+
+```js
+xxx.toUpperCase();
+```
+
+
 You saw the example with a number and a "text number" being added
 
 `3 + '3' => '33'`
@@ -295,9 +303,9 @@ console.log(newObject.name);
 `undefined` & `null` - whilst the two values are similar, they're not equal. undefined is a special type and the default value for undefined variables, null is actually of type object and never a default value of anything.
 
 #
-### 2.13. typeof
+### 2.13. type of
 
-`typeof [1, 2, 3]` is an **Object**, or and an **Array**  
+`typeof [1, 2, 3]` is an **Object**
 `typeof undefined` is **undefined**  
 `typeof null` is **Object**  
 `typeof NaN` is **number**
@@ -641,7 +649,7 @@ outerWhile: do {
   j++;
 } while (j < 3);
 ```
-### try catch
+### 3.12. try catch
 ![find](noteimgs/section3j.png)
 ```js
 try { 
@@ -660,7 +668,7 @@ try {
 - How JavaScript Works
 - The Weird Parts
 
-### var let const 
+### 4.1. var let const 
 
 `var` has global/function(local) scope, `let` and `const` have block scope.
 ```js
@@ -670,10 +678,11 @@ var name = "Ivy";
 console.log(name); 
 //Output: Ivy
 //This will actually not throw an error.
-
+```
+```js
 if (name === "Ivy") {
   var hobbies = ["Cooking", "Coding"]; 
-  let hobbies = ["Cooking", "Coding"];
+  //let hobbies = ["Cooking", "Coding"];
 }
 console.log(hobbies);
 //throw an error whhile using let.
@@ -681,7 +690,7 @@ console.log(hobbies);
 
 In the new project, **do not** use `var` anymore.
 
-### "Hoisting" 
+### 4.2. "Hoisting" 
 
 ```js
 console.log(name);
@@ -695,17 +704,20 @@ let name = "Max";
 //error: ReferenceError. Cannot access 'name' before initialization.
 ```
 
-### Strict Mode
+### 4.3. Strict Mode
 
 ```js
 'use strict'; //first line
 ```
 
-### Parsed & Compiled
+### 4.4. Parsed & Compiled
 
 **heap and stack**
+https://juejin.im/post/5d116a9df265da1bb47d717b
 
 **primitive vs reference Values**
+
+
 
 **Garbage collection & Memory Management**
 
@@ -723,7 +735,225 @@ More on Primitive vs Reference Values:
 https://academind.com/learn/javascript/reference-vs-primitive-values/
 
 ## 5. A Closer Look at Functions
+- Different way of creating Funciton
+- Anonymous Function (匿名函数)
+- Callback Function & funcion in funcion
+- Default Arguments & Rest Operator
+- bind() & more
 
+![find](noteimgs/section5a.png)
+#
+### 5.1. Parameter VS Argument
+
+Throughout this course, you'll hear me use the words "**parameters**" and "**arguments**" interchangeably.
+
+Technically, there is **a difference though**:
+
+Parameters are these variables which you specify between parentheses when defining a function.
+```js
+function sayHi(name) { ... }
+```
+In this example, `name` is a parameter.
+
+Arguments then are the concrete values you pass to a function when calling that function:
+```js
+sayHi('Max');
+```
+`'Max'` is an argument of the function therefore - for the `name` parameter to be precise.
+
+Since both concepts obviously are extremely close connected, I will often say "let's define which arguments a function receives" or something comparable, since defining the arguments of a function in the end means that you set up its parameters (and vice-versa).
+
+#
+### 5.2. creating function
+**function & object**
+
+function can be a object.  
+object can be a function.  
+
+
+**function in Variable**
+
+**Function Expressions vs Function Declarations**
+
+Function declarations automatically create variables that hold the function objects, function expressions don't do that - they return an object instead, it's your job to then do something with it (e.g. store it in a variable).
+
+![find](noteimgs/section5c.png)
+
+#
+### 5.3. Anonymous Functions
+https://www.jianshu.com/p/435bd1e773cd
+
+#
+### 5.4. Arrow Function
+```js
+const normalFc = function (name) {
+  console.log(name);
+};
+
+const arrowFc = (name) => {
+  console.log(name);
+};
+```
+```js
+const add = function (a, b) {
+  return a + b;
+}
+
+const add = (a, b) => a + b;
+```
+![find](noteimgs/section5d.png)
+
+
+For arrow functions, you got a couple of different syntaxes which you can use - here's a summary.
+
+**Important: Don't miss the "function only returns an object" special case at the end of this article!**
+
+**1) Default syntax:**
+```js
+const add = (a, b) => {
+    const result = a + b;
+    return result; // like in "normal" functions, parameters and return statement are OPTIONAL!
+};
+```
+Noteworthy: Semi-colon at end, no function keyword, parentheses around parameters/ arguments.
+
+**2) Shorter parameter syntax, if exactly one parameter is received:**
+```js
+const log = message => {
+    console.log(message); // could also return something of course - this example just doesn't
+};
+```
+Noteworthy: Parentheses around parameter list can be omitted (for exactly one argument).
+
+**3) Empty parameter parentheses if NO arguments are received:**
+```js
+const greet = () => {
+    console.log('Hi there!');
+};
+```
+Noteworthy: Parentheses have to be added (can't be omitted)
+
+**4) Shorter function body, if exactly one expression is used:**
+```js
+const add = (a, b) => a + b;
+```
+Noteworthy: Curly braces and return statement can be omitted, expression result is always returned automatically
+
+**5) Function returns an object (with shortened syntax as shown in 4)):**
+```js
+const loadPerson = pName => ({name: pName });
+```
+Noteworthy: Extra parentheses are required around the object, since the curly braces would otherwise be interpreted as the function body delimiters (and hence a syntax error would be thrown here).
+
+That last case can be confusing: Normally, in JavaScript, curly braces always can have exactly one meaning.
+```js
+const person = { name: 'Max' }; // Clearly creates an object
+if (something) { ... } // Clearly used to mark the if statement block
+```
+But when using arrow functions, curly braces can have two meanings:
+
+1) Mark the function body (in default form)
+
+2) Create an object which you want to return (in shorter function body form)
+
+To "tell" JavaScript what you want to do, wrap the expression (e.g. object creation) in parentheses like shown above.
+* explam more in other section.
+
+#
+### 5.5. default Arguments
+
+function can be called with less(or without any) arguments.
+```js
+const defaultValue = 1
+const sumUp = (number1, number2 = defaultValue ) => {
+  return number1 + number2
+}
+
+console.log(sumUp(2));
+//output: 3
+```
+
+Default arguments are not a "validation mechanism".  
+
+
+### 5.6. Rest Parameters
+Rest Operator must be the last Parameters.  
+
+
+```js
+const sumUp = (...number) => {
+  let sum = 0;
+  for (const num of number ){
+    sum += num;
+  }
+  return sum;
+}
+console.log(sumUp(1, 2, 3, 4));
+//output: 10
+```
+
+It bundles all arguments beyound the first 2 argument into an array.
+```js
+const sumUp = (a, b, ...number) => {
+  let sum = 0;
+  for (const num of number ){
+    sum += num;
+  }
+  return sum;
+}
+console.log(sumUp(1, 2, 3, 4));
+//output: 7
+```
+
+`arguments` not work in arrow function. (don't use that in you code)
+```js
+const sumUp = function() {
+  let sum = 0;
+  for (const num of arguments ){ // don't use that
+    sum += num;
+  }
+  return sum;
+}
+console.log(sumUp(1, 2, 3, 4));
+//output: 10
+```
+
+### 5.7. function inside of function
+*Will dive deeper.*
+
+### 5.8. call back function
+
+
+```js
+const sumUp = (resultHandler, ...number) => {
+  let sum = 0;
+  for (const num of number ){
+    sum += num;
+  }
+  resultHandler(sum);
+}
+const showResult = ( result) => {
+  alert( "Total result is:" + result)
+}
+
+sumUp(showResult, 1, 2, 3, 4);
+//output: 10
+```
+
+#
+### 5.9. bind()
+
+In situations where you want to "pre-configure" a function's arguments, when you're not calling the function on your own.
+
+**The following resources may be helpful.**
+
+More on Functions (MDN): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions
+
+bind(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
+
+#
+### call() & apply()
+*Will dive deeper.*
 
 ## 6. DOM Basics
 ## 7. Arrays & Iterables
@@ -788,3 +1018,4 @@ hints: `shift + cmd + space`;
  `breakpoint` with IDE and chrome.
 
 
+https://medium.com/@jbbpatel94/difference-between-offsetheight-clientheight-and-scrollheight-cfea5c196937

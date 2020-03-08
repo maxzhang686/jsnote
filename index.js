@@ -37,7 +37,32 @@ console.log(name, hobbies);
  */
 
 'use strict';
-
+/* 
 console.log(name);
 var name = "Max";
 
+const sumUp = (a, b, ...number) => {
+  let sum = 0;
+  for (const num of number ){
+    sum += num;
+  }
+  return sum;
+}
+
+console.log(sumUp(1, 2, 3, 4));
+//output: 36
+ */
+
+
+const sumUp = (resultHandler, ...number) => {
+  let sum = 0;
+  for (const num of number ){
+    sum += num;
+  }
+  resultHandler(sum);
+}
+const showResult = ( result) => {
+  alert( "Total result is: " + result)
+}
+
+sumUp(showResult, 1, 2, 3, 4);
