@@ -38,6 +38,8 @@
 - [36. Efficient Development & Debugging](#36-efficient-development--debugging)
 
 ## 1. Getting Started
+Testing: Browser support.
+
 ### 1.1. Dynamic vs Weakly Typed Languages
 
 ***
@@ -52,7 +54,7 @@ variable: A data container where the data can be changed during program executio
 ### 2.2. Declaring & Defining
 ![find](noteimgs/section1b.png)
 
-**set up as a global value:**
+**set up as a global value:**  
 it's also quite common to use all uppercase characters there and separate words with an underscore, to make it really clear that this is a global value which you just hardcoded into the code.
 ```js
 const ATTACK_VALUE = 10;
@@ -80,7 +82,7 @@ let currentResult = "(" + defaultResult + "+ 10) * 3 / 2 -1";
 let currentResult = `(${defaultResult} + 10) * 3 / 2 -1`;
 ```
 
-string Escape notation.[link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#Escape_notation)  
+string Escape notation. [Link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#Escape_notation)  
 
 * css: `white-space: pre`.
 
@@ -97,14 +99,14 @@ Function parameters are Data that can be provided to the function (input) - avai
 
 **Most importantly**: A function is not "an alternative to a variable". It supports a totally different use-case. But it's also worth pointing out that variables are NOT restricted to storing numbers or strings.
 
-defines
+**defines**
 ```js
 function functionName(parameter1, parameter2){
   const result = parameter1 + parameter2;
   alert(`The resule is ${result}`)
 }
 ```
-call function
+**call function**
 ```js
 functionName()
 ```
@@ -126,13 +128,13 @@ function add() {
   something = someNum + someOtherNum;
 }
 ```
-`add()` vs `add`
+<span style="color: red">`add()`</span> vs <span style="color: red">`add`</span>
 
 It's important to understand why we have these "two ways"!
 
 **In general**, you call a function that you defined by **using its name** (e.g. `add`) and **adding parentheses** (with any parameters the function might need - or empty parentheses if no parameters are required like in the above example).
 
-=> **`add()`**
+=> <span style="color: red">`add()`</span>
 
 This is how you execute a function from your code. Whenever JavaScript encounters this statement, it goes ahead and runs the code in the function. Period!
 
@@ -140,11 +142,11 @@ This is how you execute a function from your code. Whenever JavaScript encounter
 
 That's when you don't directly call the function but when you instead just provide JavaScript with the name of the function.
 
-=> **`someButton.addEventListener('click', add);`**
+=> <span style="color: red">`someButton.addEventListener('click', add);`</span>
 
 This snippet would tell JavaScript: "Hey, when the button is clicked, go ahead and execute add.".
 
-**`someButton.addEventListener('click', add());`** would be wrong.
+<span style="color: red">`someButton.addEventListener('click', add());`</span> would be wrong.
 
 Why? Because JavaScript would encounter that line when it parses/ executes your script and register the event listener AND immediately execute add - because you added parentheses => That means (see above): "Please execute that function!".
 
@@ -168,7 +170,7 @@ function functionName(parameter1, parameter2){
   return result;
 }
 ```
-Any code that have write after `return`, won't execute.  
+Any code that have write after <span style="color: red">`return`</span>, won't execute.  
 
 
 #
@@ -188,9 +190,9 @@ function greetUser(name) {
 userName = 'Manu';
 greetUser('Max');
 ```
-This will actually show an alert that says `'Max'` (NOT `'Manu'`).
+This will actually show an alert that says <span style="color: red">`'Max'`</span> (NOT <span style="color: red">`'Manu'`</span>).
 
-You might've expected that an error gets thrown because we use and declare userName more than once - and as you learned, that is not allowed.
+You might've expected that an error gets thrown because we use and declare <span style="color: red">`userName`</span> more than once - and as you learned, that is not allowed.
 
 It indeed is **not allowed on the same level/ in the same scope**.
 
@@ -201,7 +203,7 @@ let userName = 'Manu';
 ```
 Why does it work in the first code snippet though?
 
-Because we first create a global variable `userName` via
+Because we first create a global variable <span style="color: red">`userName`</span> via
 ```js
 let userName = 'Max';
 ```
@@ -211,7 +213,7 @@ We only declare another variable inside of the function. But since variables in 
 
 It **creates a new variable on a different scope** - this variables does not overwrite or remove the global variable by the way - **both co-exist**.
 
-When referring to `userName` inside of the `greetUser` function we now **always refer to the local, shadowed variable**. Only **if no such local variable existed, JavaScript would fall back to the global variable**.
+When referring to <span style="color: red">`userName`</span> inside of the <span style="color: red">`greetUser`</span> function we now **always refer to the local, shadowed variable**. Only **if no such local variable existed, JavaScript would fall back to the global variable**.
 
 #
 ### 2.9. Converting Data Types
@@ -245,10 +247,10 @@ isNan(inputNumber)
 xxx.toUpperCase();
 ```
 
-
+**Mix number and string**  
 You saw the example with a number and a "text number" being added
 
-`3 + '3' => '33'`
+<span style="color: red">`3 + '3'`</span>=> <span style="color: red">`'33'`</span>
 
 in JavaScript.
 
@@ -256,28 +258,28 @@ That happens because the + operator also supports strings (for string concatenat
 
 It's the only arithmetic operator that supports strings though. For example, this will not work:
 
-`'hi' - 'i' => NaN`
+<span style="color: red">`'hi' - 'i'`</span>=> <span style="color: red">`NaN`</span>
 
-`NaN` is covered a little later, the core takeaway is that you can't generate a string of 'h' with the above code. Only + supports both strings and numbers.
+<span style="color: red">`NaN`</span> is covered a little later, the core takeaway is that you can't generate a string of 'h' with the above code. Only <span style="color: red">`+`</span> supports both strings and numbers.
 
 Thankfully, JavaScript is pretty smart and therefore is actually able to handle this code:
 
-`3 * '3' => 9`
+<span style="color: red">`3 * '3'`</span> => <span style="color: red">`9`</span>
 
-Please note: It yields the number (!) 9, NOT a string '9'!
+Please note: It yields the number (!) <span style="color: red">`9`</span>, NOT a string <span style="color: red">`'9'`</span>!
 
 Similarly, these operations also all work:
 
-`3 - '3' => 0`
+<span style="color: red">`3 - '3'`</span> => <span style="color: red">`0`</span>
 
-`3 / '3' => 1`
+<span style="color: red">`3 / '3'`</span> => <span style="color: red">`1`</span>
 
-Just `3 + '3'` yields `'33'` because here JavaScript uses the "I can combine text" mode of the + operator and generates a string instead of a number.
+Just <span style="color: red">`3 + '3'` </span>yields <span style="color: red">`'33'`</span> because here JavaScript uses the "I can combine text" mode of the <span style="color: red">`+`</span> operator and generates a string instead of a number.
 
 
 #
 ### 2.10. arrays
-Section 8 will explain more. [link](#8-arrays--iterables)
+Section 8 will explain more. [Link](#8-arrays--iterables)  
 Array: A list of data of any kind.
 ```js
 newArray = [1, 2, 3]；
@@ -287,7 +289,7 @@ console.log(newArray[0]);
 
 #
 ### 2.11. object 
-Section 9 will explain more. [link](#9-objects)
+Section 9 will explain more. [Link](#9-objects)  
 object: grouped data, structured in key-value pairs.
 
 ```js
@@ -301,7 +303,7 @@ console.log(newObject.name);
 ### 2.12. undefined, null & NaN
 ![find](noteimgs/section1f.png)
 
-`undefined` & `null` - whilst the two values are similar, they're not equal. undefined is a special type and the default value for undefined variables, null is actually of type object and never a default value of anything.
+<span style="color: red">`undefined`</span> & <span style="color: red">`null`</span> - whilst the two values are similar, they're not equal. undefined is a special type and the default value for undefined variables, null is actually of type object and never a default value of anything.
 
 #
 ### 2.13. type of
@@ -332,17 +334,17 @@ only for external file
 
 ![find](noteimgs/section3a.png)
 
-Understanding the "Condition"
-Always keep in mind that `condition` in
+Understanding the "Condition"  
+Always keep in mind that <span style="color: red">`condition`</span> in
 
 ```js
 if (condition) { ... }
 ```
 simply has to be a **boolean value**.
 
-Often, you'll generate such a boolean value with the help of `===`, `>`, `<` etc. **All these operators** yield boolean values (without changing the variables/ values you're using them on).
+Often, you'll generate such a boolean value with the help of <span style="color: red">`===`, `>`, `<` </span>etc. **All these operators** yield boolean values (without changing the variables/ values you're using them on).
 
-Since `if` only wants a boolean, you of course **don't have to use such an operator**. If you already got a variable that holds a boolean, you can use it without any extra operator.
+Since <span style="color: red">`if`</span> only wants a boolean, you of course **don't have to use such an operator**. If you already got a variable that holds a boolean, you can use it without any extra operator.
 
 Example:
 ```js
@@ -360,7 +362,7 @@ if (isLoggedIn === true) {
 ```
 but that would be **redundant**. You'd generate another new boolean where you already got one.
 
-You can use the ! operator to negate ("invert") the value:
+You can use the <span style="color: red">`!`</span> operator to negate ("invert") the value:
 ```js
 const isLoggedIn = true;
 if (!isLoggedIn) {
@@ -380,12 +382,12 @@ if (isLoggedIn !== true) {
 ```
 But again, that would be redundant.
 
-**More on Text (String) Comparisons**
-Strings can also be compared with greater than (`>`) or lower/ smaller than (`<`) operators.
+**More on Text (String) Comparisons**  
+Strings can also be compared with greater than (<span style="color: red">`>`</span>) or lower/ smaller than (<span style="color: red">`<`</span>) operators.
 
 JavaScript compares strings based on standard lexicographical ordering, using Unicode values.
 
-That means that `b` is greater than `a` for example.
+That means that <span style="color: red">`b`</span> is greater than <span style="color: red">`a`</span> for example.
 
 JavaScript always looks at the first character and only considers other characters if the first character is similar. In addition, capital characters are considered to be smaller than lowercase characters.
 
@@ -408,15 +410,16 @@ Example:
     /* do the right thing */
   }
 ```
-* compare object and array
+**compare object and array**
 ```js
 ArrayOne = [1, 2, 3];
 ArrayTwo = [1, 2, 3];
 ArrayOne == ArrayTwo; //return false
 ```
+same as object
 
 #
-### 3.3. Operator Precedence
+### 3.3. Operator Precedence (and & or)
 ![find](noteimgs/section3b.png)
 
 [Operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence)
@@ -486,11 +489,11 @@ console.log(userName && 'Anna'); // userName is truthy, hence second (!) value i
 console.log(altName && 'Anna'); // altName is falsy, hence first value is returned => ''
 console.log(userName && ''); // userName is truthy, hence second value is returned => ''
 ```
-**Always keep in mind: NO** operator (neither `===`, `>` etc. nor `&&` or `||`) changes the variable you might be using in the comparison. In the above examples, the values stored in `userName` and `altName` **are NEVER changed**.
+**Always keep in mind: NO** operator (neither <span style="color: red">`===`</span>, <span style="color: red">`>`</span> etc. nor <span style="color: red">`&&`</span> or <span style="color: red">`||`</span>) changes the variable you might be using in the comparison. In the above examples, the values stored in <span style="color: red">`userName`</span> and <span style="color: red">`altName`</span> **are NEVER changed**.
 
-`===`, `>` etc. just **generate new boolean values** which are used in the comparison. `||` and `&&` **generate NO booleans**, they just treat the v**alues before and after them as conditions** (which therefore need to yield boolean values and are coerced to booleans if required).
+<span style="color: red">`===`, `>`</span> etc. just **generate new boolean values** which are used in the comparison. <span style="color: red">`||` and `&&`</span> **generate NO booleans**, they just treat the v**alues before and after them as conditions** (which therefore need to yield boolean values and are coerced to booleans if required).
 
-Because of the above-described behaviors, you often use `||` in JavaScript to assign default/ fallback values to variables/ constants:
+Because of the above-described behaviors, you often use <span style="color: red">`||`</span> in JavaScript to assign default/ fallback values to variables/ constants:
 ```js
 const enteredValue = ''; // let's assume this is set based on some input provided by the user, therefore it might be an empty string
  
@@ -499,7 +502,7 @@ const userName = enteredValue || 'PLACEHOLDER'; // will assign 'PLACEHOLDER' if 
 
 #
 ### 3.9. Switch with "break"
-Switch with greater than ect.(link)[https://stackoverflow.com/questions/32576618/switch-statement-to-compare-values-greater-or-less-than-a-number/32576647]
+Switch with greater than ect. [Link](https://stackoverflow.com/questions/32576618/switch-statement-to-compare-values-greater-or-less-than-a-number/32576647)
 
 example:
 ```js
@@ -723,27 +726,27 @@ let name = "Max";
 #
 ### 4.4. Parsed & Compiled
 
-**heap and stack**
-https://juejin.im/post/5d116a9df265da1bb47d717b
+**heap and stack** [Link-CN](
+https://juejin.im/post/5d116a9df265da1bb47d717b)
 
-**primitive vs reference Values**
+**primitive vs reference Values**   
 
+* add code later  
 
 
 **Garbage collection & Memory Management**
 
 Very important this section. Need to come back and really understand what they are.
-More on JavaScript Memory Management (Garbage Collection):   
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management
+More on JavaScript Memory Management (Garbage Collection): [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management)
 
-V8's Garbage Collection Logic:  
-https://v8.dev/blog/free-garbage-collection
+V8's Garbage Collection Logic: [V8-Link](https://v8.dev/blog/free-garbage-collection)
 
-V8's JavaScript Engine in Great Detail:   
-https://hackernoon.com/javascript-v8-engine-explained-3f940148d4ef
 
-More on Primitive vs Reference Values:   
-https://academind.com/learn/javascript/reference-vs-primitive-values/
+V8's JavaScript Engine in Great Detail: [Link](https://hackernoon.com/javascript-v8-engine-explained-3f940148d4ef)
+
+
+More on Primitive vs Reference Values:  [Link](https://academind.com/learn/javascript/reference-vs-primitive-values/)
+
 
 ***
 ## 5. A Closer Look at Functions
@@ -765,25 +768,25 @@ Parameters are these variables which you specify between parentheses when defini
 ```js
 function sayHi(name) { ... }
 ```
-In this example, `name` is a parameter.
+In this example, <span style="color: red">`name`</span> is a parameter.
 
 Arguments then are the concrete values you pass to a function when calling that function:
 ```js
 sayHi('Max');
 ```
-`'Max'` is an argument of the function therefore - for the `name` parameter to be precise.
+<span style="color: red">`'Max'`</span> is an argument of the function therefore - for the <span style="color: red">`name`</span> parameter to be precise.
 
 Since both concepts obviously are extremely close connected, I will often say "let's define which arguments a function receives" or something comparable, since defining the arguments of a function in the end means that you set up its parameters (and vice-versa).
 
 #
 ### 5.2. creating function
-**function & object**
+**Function & object**
 
 function can be a object.  
 object can be a function.  
 
 
-**function in Variable**
+**Function in Variable**
 
 **Function Expressions vs Function Declarations**
 
@@ -917,7 +920,8 @@ console.log(sumUp(1, 2, 3, 4));
 //output: 7
 ```
 
-`arguments` not work in arrow function. (don't use that in you code)
+
+*`arguments` not work in arrow function. (don't use that in you code)
 ```js
 const sumUp = function() {
   let sum = 0;
@@ -959,9 +963,9 @@ In situations where you want to "pre-configure" a function's arguments, when you
 
 **The following resources may be helpful.**
 
-More on Functions (MDN): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions
+More on Functions : [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
 
-bind(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
+**bind()**: [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind)
 
 #
 ### 5.10. call() & apply()
@@ -1003,32 +1007,34 @@ $0
 Querying Elements
 ![find](noteimgs/section6c.png)
 
+look at [6.11. live node lists vs static node lists](#611-live-node-lists-vs-static-node-lists)
+
 #
 ### 6.3. Selecting Elements
 
 ```js
-document.getElementById("id-name");
-document.getElementsByTagName("tab-name");
-document.querySelector("tab-name/.class-name/#id-name")//return the first one
+document.getElementById("id-name");//live
+document.querySelector("tab-name/.class-name/#id-name")//live
+//return the first one
 
 //document.getElementsByClassName("class-name");
-document.querySelectorAll("tab-name/.class-name")
-
+document.querySelectorAll("tab-name/.class-name")//none live
+document.getElementsByTagName("tab-name");//live
 ```
 
 
 
 #
-**Summary: Node Query Methods**
+**Summary: Node Query Methods**  
 Here's a summary of the various methods you got to reach out to DOM elements (note: you can only query for element nodes).
 
 Besides the below query methods, you also got these special properties on the document object to select parts of the document:
 
-`document.body` => Selects the `<body>` element node.
+<span style="color: red">`document.body`</span> => Selects the <span style="color: red">`<body>`</span> element node.
 
-`document.head` => Selects the `<header>` element node.
+<span style="color: red">`document.head`</span> => Selects the <span style="color: red">`<header>`</span> element node.
 
-`document.documentElement` => Selects the `<html>` element node
+<span style="color: red">`document.documentElement`</span> => Selects the <span style="color: red">`<html>`</span> element node
 
 ...
 **QUERY METHODS**
@@ -1036,34 +1042,34 @@ Besides the below query methods, you also got these special properties on the do
 ```js
 document.querySelector(<CSS selector>);
 ```
-Takes any CSS selector (e.g. `'#some-id'`, `'.some-class'` or `'div p.some-class'`) and returns the first (!) matching element in the DOM. Returns `null` if no matching element could be found.
+Takes any CSS selector (e.g. <span style="color: red">`'#some-id'`</span>, <span style="color: red">`'.some-class'`</span> or <span style="color: red">`'div p.some-class'`</span>) and returns the first (!) matching element in the DOM. Returns <span style="color: red">`null`</span> if no matching element could be found.
 
-More information: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+More information: [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
 ```js
 document.getElementById(<ID>);
 ```
-Takes an ID (without `#`, just the id name) and returns the element that has this id. Since the same ID shouldn't occur more than once on your page, it'll always return exactly that one element. Returns `null` if no element with the specified ID could be found.
+Takes an ID (without <span style="color: red">`#`</span>, just the id name) and returns the element that has this id. Since the same ID shouldn't occur more than once on your page, it'll always return exactly that one element. Returns <span style="color: red">`null`</span> if no element with the specified ID could be found.
 
-More information: https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById
+More information: [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById)
 
 document.querySelectorAll(<CSS selector>);
-Takes any CSS selector (e.g. `'#some-id'`, `'.some-class'` or `'div p.some-class'`) and returns all matching elements in the DOM as a static (non-live) `NodeList`. Returns and empty `NodeList` if no matching element could be found.
+Takes any CSS selector (e.g. <span style="color: red">`'#some-id'`</span>, <span style="color: red">`'.some-class'`</span> or <span style="color: red">`'div p.some-class'`</span>) and returns all matching elements in the DOM as a static (non-live) <span style="color: red">`NodeList`</span>. Returns and empty <span style="color: red">`NodeList`</span> if no matching element could be found.
 
-More information: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
+More information: [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)
 ```js
 document.getElementsByClassName(<CSS CLASS>);
 ```
-Takes a CSS class g (e.g. 'some-class') and returns a live HTMLCollection of matched elements in your DOM. Returns an empty HTMLCollection if not matching elements were found.
+Takes a CSS class g (e.g. <span style="color: red">`'some-class'`</span>) and returns a live <span style="color: red">`HTMLCollection`</span> of matched elements in your DOM. Returns an empty <span style="color: red">`HTMLCollection`</span> if not matching elements were found.
 
-More information: https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName
+More information: [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName)
 ```js
 document.getElementsByTagName(<HTML TAG>);
 ```
-Takes an HTML tag (e.g. `'p'`) and returns a live `HTMLCollection` of matched elements in your DOM. Returns an empty `HTMLCollection` if not matching elements were found.
+Takes an HTML tag (e.g. <span style="color: red">`'p'`</span>) and returns a live <span style="color: red">`HTMLCollection`</span> of matched elements in your DOM. Returns an empty <span style="color: red">`HTMLCollection`</span> if not matching elements were found.
 
-More information: https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName
+More information: [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName)
 
-There also is the `getElementsByName()` method which really isn't used commonly (https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByName).
+There also is the <span style="color: red">`getElementsByName()`</span> method which really isn't used commonly [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByName).
 
 #
 ### 6.4. Exploring and Changing DOM Properties
@@ -1220,6 +1226,132 @@ list.insertBefore(newLi, firstLi);
 //add new element to the `ul`, will be the before the refernceNode.
 ```
 
+#
+### 6.10. cloning dom node
+
+```js
+const newLi2 = newLi.cloneNode(true);
+//different between true and false?
+```
+
+#
+### 6.11. live node lists vs static node lists
+
+![find](noteimgs/section6c.png)
+
+example:
+```html
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
+```
+if you get all the `li` first, add an new element (`<li>4</li>`) to the ul, and get all `li` again after.  
+Live node list will get a array `HTMLCollection(4)[]`;  
+Static node lists will get a array `Nodelist(3)[]`, it is not going to get the new `li` which you just add.   
+Look at the example below:
+![find](noteimgs/section6l.png)  
+*Live node not means it is better.   
+It could lead to a higher memory consumption if you're managing a lot of such collections which change all the time.
+
+#
+### 6.12. Removing Element
+
+```js
+const list = document.querySelector('ul');
+
+list.remove();//not work in IE
+list.parentElement.removeChild(list);//for all browsers.
+```
+#
+### 6.13. summary for insert, replace, remove
+![find](noteimgs/section6m.png)
+
+
+There are many ways of creating, inserting, replacing and removing DOM elements - here's a summary of the options you have.
+
+For browser support, check the provided links and also the "Browser Support" module you find later in this documents.
+
+***Create & Insert***  
+You got two main options: Provide an HTML snippet (e.g. via <span style="color: red"> `innerHTML` </span>) to a valid HTML snippet and let the browser render it OR create a DOM object in JS code and append/ insert it manually. The latter approach has the advantage of giving you direct access to the DOM object (useful for setting its properties or adding event listeners). The downside is that you have to write more code.
+
+***Adding HTML Code:***
+```js
+const root = document.getElementById('root-el'); // selects something like <div id="root-el">
+root.innerHTML = `
+    <div>
+        <h2>Welcome!</h2>
+        <p>This is all create & rendered automatically!</p>
+    </div>
+`;
+```
+Important: Any existing content in <span style="color: red">`root`</span> is  completely replaced when using <span style="color: red">`innerHTML`</span>. If you want to append/ insert HTML code, you can use  <span style="color: red"> `insertAdjacentHTML` </span>instead: [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML)
+
+```js
+const root = document.getElementById('root-el'); // selects something like <div id="root-el">
+root.insertAdjacentHTML('afterbegin', `
+    <div>
+        <h2>Welcome!</h2>
+        <p>This is all create & rendered automatically!</p>
+    </div>
+`);
+```
+***Creating & Inserting DOM Objects Manually:***
+```js
+const someParagraph = document.createElement('p'); // creates a "p" element (i.e. a <p> element)
+const root = document.getElementById('root-el'); // selects something like <div id="root-el">
+root.append(someParagraph);
+```
+In this example, we create a paragraph and append it to <span style="color: red">`root`</span> - append means that it's inserted at the end of <span style="color: red">`root`</span> (i.e. inside of it but AFTER all other child nodes it holds).
+
+***Insertion Methods:***
+
+<span style="color: red">`append()`</span> =>  [MDN-Link](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/append)
+
+Browser support is decent but for IE, <span style="color: red">  `appendChild()`</span> could be preferred => [MDN-Link](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild)
+
+<span style="color: red">`prepend()`</span> => [MDN-Link](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/prepend)
+
+Browser support is decent but for IE, <span style="color: red">`insertBefore()`</span> could be preferred => [MDN-Link](https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore)
+
+<span style="color: red">`before(), after()`</span> => [MDN-Before](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/before) & [MDN-After](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/after)
+
+Browser support is okay but IE and Safari don't support it. Consider <span style="color: red">`insertBefore()`</span> [MDN-Link](https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore) or <span style="color: red">`insertAdjacentElement()`</span> [MDN-Link](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement) as substitutes.
+
+Important (no matter how you insert elements): Whenever you insert elements, you **MOVE the element** to that new place if you already inserted it before. It's **NOT copied** (you can copy an element via <span style="color: red">`someElement.cloneNode(true)`</span> though).
+
+***Replace***  
+You can replace elements in the DOM with two main methods:
+
+<span style="color: red">`replaceWith()`</span> => [MDN-Link](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/replaceWith)
+
+<span style="color: red">`replaceChild()`</span> => [MDN-Link](https://developer.mozilla.org/en-US/docs/Web/API/Node/replaceChild)
+
+<span style="color: red">`replaceWith()`</span> is a bit easier to use and has decent browser support - with IE being the exception. To support that as well, consider using <span style="color: red">`replaceChild()`</span>.
+
+***Remove***  
+You can remove elements with three main methods:
+
+<span style="color: red">`someElement.innerHTML = ''`</span> => Clears all HTML content of <span style="color: red">`someElement`</span> and hence removes any objects rendered in there.
+
+<span style="color: red">`someElement.remove()`</span> => Removes a single element (<span style="color: red">`someElement`</span>) from the DOM [MDN-Link](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove). Browser support is good, IE again doesn't like it though. Use <span style="color: red">`removeChild`</span> (see below) instead.
+
+<span style="color: red">`someElement.parentNode.removeChild(someElement)`</span> =>  Removes the provided child element (NOT the element on which you call it). Provides broad browser support but of course requires a bit more code [MDN-Link](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild).
+
+***What about Text Nodes?***  
+You can easily create & insert text nodes in one go:
+```js
+someElement.textContent = 'Hi there!';
+```
+This creates and inserts the text node with a content of `'Hi there!'`.
+
+Want to append to existing text?
+
+Just use:
+```js
+someElement.textContent = someElement.textContent + 'More text!';
+```
 
 ***
 ## 7. Arrays & Iterables

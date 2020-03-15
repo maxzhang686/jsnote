@@ -115,6 +115,7 @@ const list = document.querySelector('ul');
 const secondLi = list.children[1]
 
 const newLi = document.createElement('li');
+newLi.classList.add("xxx")
 newLi.textContent = "Number 4";
 
-secondLi.insertAdjacentElement('afterend',newLi);
+//secondLi.insertAdjacentElement('afterend',newLi);
