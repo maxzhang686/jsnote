@@ -40,6 +40,7 @@
 ## 1. Getting Started
 ### 1.1. Dynamic vs Weakly Typed Languages
 
+***
 ## 2. Language Basics, Base Syntax
 #
 ### 2.1. Variables & Constants
@@ -57,7 +58,7 @@ it's also quite common to use all uppercase characters there and separate words 
 const ATTACK_VALUE = 10;
 ```
 
-
+#
 ### 2.3. Operators
 ![find](noteimgs/section1c.png)
 
@@ -318,6 +319,7 @@ only for external file
 ![find](noteimgs/section1h.png)
 ![find](noteimgs/section1i.png)
 
+***
 ## 3. Control Structures (if, Loops, Error…)
 - conditional Statements(if) & Expressions
 - Boolean Values & Operators
@@ -429,6 +431,9 @@ Falsy and Truthy value (**Print out**)
 
 #
 ### 3.5. Ternary Operator
+![find](noteimgs/section3k.png)
+
+
 Example:
 
 ```js
@@ -461,6 +466,7 @@ const logEvent = mode === MODE_ATTACK ? LOG_EVENT_PLAYER_ATTACK : LOG_EVENT_PLAY
 ---
 ![find](noteimgs/section3h.png)
 
+#
 ### 3.8. locical Operators
 (**Print out**)
 
@@ -491,7 +497,7 @@ const enteredValue = ''; // let's assume this is set based on some input provide
 const userName = enteredValue || 'PLACEHOLDER'; // will assign 'PLACEHOLDER' if enteredValue is an empty string
 ```
 
-
+#
 ### 3.9. Switch with "break"
 Switch with greater than ect.(link)[https://stackoverflow.com/questions/32576618/switch-statement-to-compare-values-greater-or-less-than-a-number/32576647]
 
@@ -534,7 +540,7 @@ example:
     break;
  }
 ```
-
+#
 ### 3.10. Loop
 ![find](noteimgs/section3i.png)
 
@@ -574,6 +580,7 @@ for (const logEntry of battleLog) {
   i++
 }
 ```
+
 #### 3.10.4. while loops 
 ```js
 let randomNumber = [];
@@ -605,7 +612,7 @@ do {
 } while (j < 3) 
 //output: 3
  ```
-
+#
 ### 3.11. break and continue in Loop
 
 **Break** indeed does stop the entire loop execution immediately and moves on to code execution after the loop.  
@@ -649,6 +656,7 @@ outerWhile: do {
   j++;
 } while (j < 3);
 ```
+#
 ### 3.12. try catch
 ![find](noteimgs/section3j.png)
 ```js
@@ -662,12 +670,14 @@ try {
 
 ```
 
+***
 ## 4. Behind the Scenes of JS  The (Weird) Past (ES3, ES5) & Present (ES6+)
 
 - ES5 vs ES6+ Syntax
-- How JavaScript Works
+- How JavaScript Works (heap, stack, Garbage collection & Memory Management)
 - The Weird Parts
 
+#
 ### 4.1. var let const 
 
 `var` has global/function(local) scope, `let` and `const` have block scope.
@@ -690,6 +700,7 @@ console.log(hobbies);
 
 In the new project, **do not** use `var` anymore.
 
+#
 ### 4.2. "Hoisting" 
 
 ```js
@@ -703,13 +714,13 @@ console.log(name);
 let name = "Max"; 
 //error: ReferenceError. Cannot access 'name' before initialization.
 ```
-
+#
 ### 4.3. Strict Mode
 
 ```js
 'use strict'; //first line
 ```
-
+#
 ### 4.4. Parsed & Compiled
 
 **heap and stack**
@@ -734,6 +745,7 @@ https://hackernoon.com/javascript-v8-engine-explained-3f940148d4ef
 More on Primitive vs Reference Values:   
 https://academind.com/learn/javascript/reference-vs-primitive-values/
 
+***
 ## 5. A Closer Look at Functions
 - Different way of creating Funciton
 - Anonymous Function (匿名函数)
@@ -875,7 +887,7 @@ console.log(sumUp(2));
 
 Default arguments are not a "validation mechanism".  
 
-
+#
 ### 5.6. Rest Parameters
 Rest Operator must be the last Parameters.  
 
@@ -917,12 +929,12 @@ const sumUp = function() {
 console.log(sumUp(1, 2, 3, 4));
 //output: 10
 ```
-
+#
 ### 5.7. function inside of function
 *Will dive deeper.*
 
+#
 ### 5.8. call back function
-
 
 ```js
 const sumUp = (resultHandler, ...number) => {
@@ -952,42 +964,331 @@ More on Functions (MDN): https://developer.mozilla.org/en-US/docs/Web/JavaScript
 bind(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
 
 #
-### call() & apply()
+### 5.10. call() & apply()
 *Will dive deeper.*
 
 ## 6. DOM Basics
+
+- HTML, DOM & JavaScript
+- Nodes & Elements
+- Querying DOM Nodes & Traversing the Dom
+- Evaluating & Manipulation DOM Nodes
+- Creating & Removing DOM Nodes
+
+![find](noteimgs/section6a.png)
+![find](noteimgs/section6b.png)
+
+#
+### 6.1. Document and Window Object
+
+```js
+console.dir(document);
+
+window.alert("Max") = alert("Max")
+```
+
+```js
+$0 
+ //$0 always gives you access to the last element you selected in the "Elements" tab!
+```
+
+
+
+#
+### 6.2. node & element
+
+![find](noteimgs/section6d.png)
+![find](noteimgs/section6d1.png)
+
+Querying Elements
+![find](noteimgs/section6c.png)
+
+#
+### 6.3. Selecting Elements
+
+```js
+document.getElementById("id-name");
+document.getElementsByTagName("tab-name");
+document.querySelector("tab-name/.class-name/#id-name")//return the first one
+
+//document.getElementsByClassName("class-name");
+document.querySelectorAll("tab-name/.class-name")
+
+```
+
+
+
+#
+**Summary: Node Query Methods**
+Here's a summary of the various methods you got to reach out to DOM elements (note: you can only query for element nodes).
+
+Besides the below query methods, you also got these special properties on the document object to select parts of the document:
+
+`document.body` => Selects the `<body>` element node.
+
+`document.head` => Selects the `<header>` element node.
+
+`document.documentElement` => Selects the `<html>` element node
+
+...
+**QUERY METHODS**
+....
+```js
+document.querySelector(<CSS selector>);
+```
+Takes any CSS selector (e.g. `'#some-id'`, `'.some-class'` or `'div p.some-class'`) and returns the first (!) matching element in the DOM. Returns `null` if no matching element could be found.
+
+More information: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+```js
+document.getElementById(<ID>);
+```
+Takes an ID (without `#`, just the id name) and returns the element that has this id. Since the same ID shouldn't occur more than once on your page, it'll always return exactly that one element. Returns `null` if no element with the specified ID could be found.
+
+More information: https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById
+
+document.querySelectorAll(<CSS selector>);
+Takes any CSS selector (e.g. `'#some-id'`, `'.some-class'` or `'div p.some-class'`) and returns all matching elements in the DOM as a static (non-live) `NodeList`. Returns and empty `NodeList` if no matching element could be found.
+
+More information: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
+```js
+document.getElementsByClassName(<CSS CLASS>);
+```
+Takes a CSS class g (e.g. 'some-class') and returns a live HTMLCollection of matched elements in your DOM. Returns an empty HTMLCollection if not matching elements were found.
+
+More information: https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByClassName
+```js
+document.getElementsByTagName(<HTML TAG>);
+```
+Takes an HTML tag (e.g. `'p'`) and returns a live `HTMLCollection` of matched elements in your DOM. Returns an empty `HTMLCollection` if not matching elements were found.
+
+More information: https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName
+
+There also is the `getElementsByName()` method which really isn't used commonly (https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementsByName).
+
+#
+### 6.4. Exploring and Changing DOM Properties
+![find](noteimgs/section6e.png)
+https://developer.mozilla.org/en-US/docs/Web/API
+
+#
+### 6.5. Attributes vs Properties
+![find](noteimgs/section6f.png)
+
+
+#
+### 6.6. Traversing
+
+![find](noteimgs/section6g.png)
+![find](noteimgs/section6h.png)
+
+**child nodes**
+```js
+const ul = document.querySelector('ul');
+ul.children; //show all elements (li) in the ul
+ul.children[1];// select the second element (li)
+ul.childNodes; //show all node in the ul
+```
+
+**parent node**
+```js
+document.documentElement.parentElement;//null
+document.documentElement.parentNode;//#document
+```
+
+```jsx
+<html>
+  <body>
+    <header>
+    </header>
+    <ul>
+      <li></li>
+      <li></li>
+    </ul>    
+  </body>
+</html>
+
+const firstLi = document.querySelector('li');
+li.parentNode; //select parent node (ul)
+
+firstLi.closest('body'); //<body></body>
+firstLi.closest('header');//null
+```
+
+**sibling element**
+```js
+ul.previousSibling; //text node
+ul.previousElementSibling; //<header></header>
+ul.nextElementSibling;
+```
+
+#
+### 6.7. styling dom elements
+![find](noteimgs/section6i.png)
+via inline style
+```js
+const task1 = document.querySelector("li");
+
+task1.style.backgroundColor = "black";
+task1.style.color = "white";
+
+const h1 = document.getElementsByTagName('h1');
+h1[0].textContent = 'Assignment - Solved!';
+```
+via class
+```js
+const section = document.querySelector('section');
+//example: 
+section.className = 'xxx'; //change the section css class-name to xxx
+
+section.classList.add('xxx');//add class name.
+section.classList.toggle('xxx');//Toggles between a class name for an element
+section.classList.contains('xxx');//Returns a Boolean value, indicating whether an element has the specified class name.
+```
+
+#
+### 6.8. creating elements
+![find](noteimgs/section6j.png)
+
+**creating via HTML**
+
+```js
+const ulList = document.querySelector('ul');
+const p = document.querySelector('p');
+
+p.textContent = "New content";//rewrite 
+ulList.innerHTML = "<li>new li<li>";//rewrite 
+
+ulList.innerHTML = ulList.innerHTML + "<li>add li<li>";//add
+//not good for the performance. render other-element you don't want to change.
+```
+
+```jsx
+p.insertAdjacentHTML(position, text);
+
+<!-- beforebegin --> //Before the element itself.
+<p>
+  <!-- afterbegin --> //Just inside the element, before its first child.
+  foo
+  <!-- beforeend --> //Just inside the element, after its last child.
+</p>
+<!-- afterend --> //After the element itself.
+```
+
+**creating via createElement()**
+```js
+const list = document.querySelector('ul');
+const newLi = document.createElement('li');//create element
+newLi.textContent = "4";//add text to the element
+
+list.appendChild(newLi);//add element to the `ul`, at the end
+```
+
+
+chrome maybe wrong?
+![find](noteimgs/section6k.png)
+
+#
+### 6.9. **inserting Dom elements**
+
+*`append, before, after` can take multiple nodes   
+*`appendChild()` not support insert a `node`  
+*`append()`, `prepend()` not support `IE`   
+
+
+```js
+ul.appendChild(newLi);//add element in the `ul`, be the last child element
+
+ul.prepend(newLi);//add element in the `ul`, be the first child element
+ul.lastElementChild.before(newLi);//before the last child.
+ul.lastElementChild.after(newLi);
+ul.firstElementChild.replaceWith(newLi);//replace the first child.
+```
+*`before, after` not suppor `IE` & `safari`, so if you want to insert an element to a specific position, use `insertAdjacentElement`
+
+```js
+const list = document.querySelector('ul');
+const secondLi = list.children[1]
+
+const newLi = document.createElement('li');
+newLi.textContent = "Number 4";
+
+secondLi.insertAdjacentElement('afterend',newLi); //position same as insertAdjacentHTML
+```
+
+```js
+list.insertBefore(newLi, firstLi);
+//add new element to the `ul`, will be the before the refernceNode.
+```
+
+
+***
 ## 7. Arrays & Iterables
+***
 ## 8. Objects
+***
 ## 9. Classes & Object-oriented Programming (OOP)
+
+***
 ## 10. Constructor Functions & Prototypes
+***
 ## 11. Practice: OOP & Classes
+***
 ## 12. More about DOM & Browser APIs
+
+***
 ## 13. Events
+***
 ## 14. Advanced Function Concepts
+
+***
 ## 15. More about Numbers & Strings
+***
 ## 16. Asynchronous/Async JS: Promises & Callbacks
+***
 ## 17. Background Http (Ajax)
+***
 ## 18. rd Party Libraries
+***
 ## 19. JavaScript Modules
+***
 ## 20. Tooling (Webpack, Babel, …)
+***
 ## 21. Working with Browser Storage
+***
 ## 22. Browser Support
+***
 ## 23. Peactice
+***
 ## 24. JavaScript Frameworks
+***
 ## 25. Meta-programming: Symbols, Iterators, Generators, Reflect API & Proxy API
+***
 ## 26. NodeJS Introduction
+***
 ## 27. Security
+***
 ## 28. Deployment
+***
 ## 29. Performance Optimizations & Memory Leaks
+***
 ## 30. Testing
+***
 ## 31. Bonus: Programming Paradigms (Procedural vs Object Oriented vs Functional)
+***
 ## 32. Bonus: Data Structures & Algorithms Introduction
+***
 ## 33. Bonus: TypeScript Introduction
+***
 ## 34. Bonus: Web Components
+***
 ## 35. Roundup & Next Steps
+***
 ## 36. Efficient Development & Debugging
+
 ### 36.1. Overview
 ![find](noteimgs/section36a.png)
+
+#
 ### 36.2. IDE
 color,theme, Icon, extensions,
 
@@ -1006,13 +1307,14 @@ delete whole line: `shift + cmd + K`
 open the suggestion: `control + space`;
 hints: `shift + cmd + space`;
 
+#
 ### 36.3. Find Help
 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 [ECMAScript](https://www.ecma-international.org/publications/standards/Ecma-262.htm)
 
 
-
+#
 ### 36.4. debug
 `console.log()`,
  `breakpoint` with IDE and chrome.
