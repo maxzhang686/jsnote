@@ -38,7 +38,7 @@
 - [36. Efficient Development & Debugging](#36-efficient-development--debugging)
 
 ## 1. Getting Started
-Testing: Browser support.
+Testing: $\color{red}{Browser support.}$
 
 ### 1.1. Dynamic vs Weakly Typed Languages
 
