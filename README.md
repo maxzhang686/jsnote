@@ -1353,6 +1353,9 @@ Just use:
 someElement.textContent = someElement.textContent + 'More text!';
 ```
 
+#
+### 6.14.  project
+
 ***
 ## 7. Arrays & Iterables
 ***
