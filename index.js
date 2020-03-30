@@ -110,12 +110,33 @@ section.classList.toggle('xxx');//change set/unset
 
 // ulList.innerHTML = ulList.innerHTML + "<li>add li<li>";//add
 // //not good for the performance. render other-element you don't want to change
-
+/* 
 const list = document.querySelector('ul');
 const secondLi = list.children[1]
 
 const newLi = document.createElement('li');
 newLi.classList.add("xxx")
 newLi.textContent = "Number 4";
-
+ */
 //secondLi.insertAdjacentElement('afterend',newLi);
+
+const usrInput = '';
+const userName = usrInput || 'Max';
+userName;
+//return: "Max"
+
+const realUserInput = 'Ivy';
+const realUserName = realUserInput || 'Max'
+realUserName;
+//return: "ivy"
+
+const isLoggedIn = true;
+const shoppingCart = isLoggedIn && ['Books'];
+shoppingCart
+//return: ["Books"]
+
+isLoggedIn = false;
+isLoggedIn && ['Books'];
+//return: false
+null && ['Books'];
+//return: null

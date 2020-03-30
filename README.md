@@ -38,7 +38,7 @@
 - [36. Efficient Development & Debugging](#36-efficient-development--debugging)
 
 ## 1. Getting Started
-Testing: $\color{red}{Browser support.}$
+
 
 ### 1.1. Dynamic vs Weakly Typed Languages
 
@@ -308,7 +308,7 @@ console.log(newObject.name);
 #
 ### 2.13. type of
 
-`typeof [1, 2, 3]` is an **Object**
+`typeof [1, 2, 3]` is an **Object**  
 `typeof undefined` is **undefined**  
 `typeof null` is **Object**  
 `typeof NaN` is **number**
@@ -458,8 +458,43 @@ const logEvent = mode === MODE_ATTACK ? LOG_EVENT_PLAYER_ATTACK : LOG_EVENT_PLAY
 ### 3.6. Statements vs Expressions 
 
 #
-### 3.7. "Tricks" shorthands
+### 3.7. locical Operators - "Tricks" shorthands
 ![find](noteimgs/section3e.png)
+
+
+||:  
+if the `first value` is true, return the `second value`.  
+if the `first value` is false, return the `first value`.
+```js
+const usrInput = '';
+const userName = usrInput || 'Max';
+userName;
+//return: "Max"
+
+const realUserInput = 'Ivy';
+const realUserName = realUserInput || 'Max'
+realUserName;
+//return: "ivy"
+```
+
+&&:  
+if the `first value` is true, return the `second value`.  
+if the `first value` is false, return the `first value`.
+```js
+const isLoggedIn = true;
+const shoppingCart = isLoggedIn && ['Books'];
+shoppingCart
+//return: ["Books"]
+
+isLoggedIn = false;
+isLoggedIn && ['Books'];
+//return: false
+null && ['Books'];
+//return: null
+
+```
+
+
 * change example img to code later:
 ![find](noteimgs/section3f.png)
 
@@ -731,7 +766,16 @@ https://juejin.im/post/5d116a9df265da1bb47d717b)
 
 **primitive vs reference Values**   
 
-* add code later  
+* Seven data types that are primitives:  
+Boolean  
+Null  
+Undefined  
+Number  
+BigInt  
+String  
+Symbol  
+* and Object
+
 
 
 **Garbage collection & Memory Management**
@@ -1050,9 +1094,11 @@ document.getElementById(<ID>);
 ```
 Takes an ID (without <span style="color: red">`#`</span>, just the id name) and returns the element that has this id. Since the same ID shouldn't occur more than once on your page, it'll always return exactly that one element. Returns <span style="color: red">`null`</span> if no element with the specified ID could be found.
 
-More information: [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById)
+More information: [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById) 
 
+```js
 document.querySelectorAll(<CSS selector>);
+```
 Takes any CSS selector (e.g. <span style="color: red">`'#some-id'`</span>, <span style="color: red">`'.some-class'`</span> or <span style="color: red">`'div p.some-class'`</span>) and returns all matching elements in the DOM as a static (non-live) <span style="color: red">`NodeList`</span>. Returns and empty <span style="color: red">`NodeList`</span> if no matching element could be found.
 
 More information: [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)
@@ -1355,6 +1401,10 @@ someElement.textContent = someElement.textContent + 'More text!';
 
 #
 ### 6.14.  project
+
+
+
+
 
 ***
 ## 7. Arrays & Iterables
