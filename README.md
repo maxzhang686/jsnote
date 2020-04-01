@@ -41,6 +41,39 @@
 
 
 ### 1.1. Dynamic vs Weakly Typed Languages
+#
+### 1.2. Converting Data Types
+
+**change the string to number.**
+```js
+parseInt(10);
+parseFloat(10.1);
+```
+**also work as*
+```js
+result + +userInput.value = result + parseInt(userInput.value)
+```
+if the number's length is more than 16, it wouldn't work. try use BigInt().
+
+**change the number to string.**
+```js
+result.toString()
+```
+
+**check is it a number.**
+```js
+isNan(inputNumber)
+```
+
+**font setting**
+```js
+xxx.toUpperCase();
+```
+
+**delete space**
+```js
+inputValue.trim();
+```
 
 ***
 ## 2. Language Basics, Base Syntax
@@ -774,7 +807,7 @@ Number
 BigInt  
 String  
 Symbol  
-* and Object
+* and Object (reference)
 
 
 
@@ -1202,7 +1235,7 @@ section.classList.contains('xxx');//Returns a Boolean value, indicating whether 
 ![find](noteimgs/section6j.png)
 
 **creating via HTML**
-
+(not recommemded)
 ```js
 const ulList = document.querySelector('ul');
 const p = document.querySelector('p');
@@ -1236,16 +1269,15 @@ list.appendChild(newLi);//add element to the `ul`, at the end
 ```
 
 
-chrome maybe wrong?
+chrome may wrong. append: node, appendChild: element. 
 ![find](noteimgs/section6k.png)
 
 #
 ### 6.9. **inserting Dom elements**
 
 *`append, before, after` can take multiple nodes   
-*`appendChild()` not support insert a `node`  
 *`append()`, `prepend()` not support `IE`   
-
+***`appendChild()`** not support insert a `node`.  (recommended) 
 
 ```js
 ul.appendChild(newLi);//add element in the `ul`, be the last child element
@@ -1255,7 +1287,7 @@ ul.lastElementChild.before(newLi);//before the last child.
 ul.lastElementChild.after(newLi);
 ul.firstElementChild.replaceWith(newLi);//replace the first child.
 ```
-*`before, after` not suppor `IE` & `safari`, so if you want to insert an element to a specific position, use `insertAdjacentElement`
+*`before, after` not suppor `IE` & `safari`, so if you want to insert an element to a specific position, use **`insertAdjacentElement`**
 
 ```js
 const list = document.querySelector('ul');
@@ -1278,6 +1310,7 @@ list.insertBefore(newLi, firstLi);
 ```js
 const newLi2 = newLi.cloneNode(true);
 //different between true and false?
+//false: no nested elements
 ```
 
 #
@@ -1504,5 +1537,7 @@ hints: `shift + cmd + space`;
 `console.log()`,
  `breakpoint` with IDE and chrome.
 
-
 https://medium.com/@jbbpatel94/difference-between-offsetheight-clientheight-and-scrollheight-cfea5c196937
+
+
+
