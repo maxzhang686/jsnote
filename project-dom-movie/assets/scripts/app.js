@@ -29,13 +29,12 @@ const confirmAddMovieHandler = () => {
   const imageValue = userInput[1].value;
   const ratingValue = +userInput[2].value;
 
-  if( titleValue.trim() === '' || imageValue === '' || ratingValue === '' || ratingValue < 1 || ratingValue>5){
+  if( titleValue.trim() === '' || imageValue.trim() === '' || ratingValue.trim() === '' || ratingValue < 1 || ratingValue>5){
     alert();
     return;
   }
 
   console.log(titleValue, imageValue, ratingValue);
-  sda ads a sda dad a
 };
 
 
