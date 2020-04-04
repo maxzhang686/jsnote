@@ -65,14 +65,26 @@ result.toString()
 isNan(inputNumber)
 ```
 
+
+### 1.3. Build-in function
+
+**delete space**
+```js
+inputValue.trim();
+```
 **font setting**
 ```js
 xxx.toUpperCase();
 ```
 
-**delete space**
 ```js
-inputValue.trim();
+arrayname.push(objectname)
+```
+
+```js
+btn.addEventListener('click', fucntion)
+alert()
+prompt()//alert and input
 ```
 
 ***
@@ -1433,7 +1445,7 @@ someElement.textContent = someElement.textContent + 'More text!';
 ```
 
 #
-### 6.14.  project
+### 6.14. project
 
 
 
