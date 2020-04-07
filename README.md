@@ -77,10 +77,12 @@ inputValue.trim();
 xxx.toUpperCase();
 ```
 
+**change contents of an array**
 ```js
-arrayname.push(objectname)
+arrayname.push(objectname);
+arrayname.splice(startIndexNumber, deleteCount, addIterm1, addItem2, ...); 
 ```
-
+[Array.prototype.splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
 ```js
 btn.addEventListener('click', fucntion)
 alert()
@@ -890,6 +892,11 @@ https://www.jianshu.com/p/435bd1e773cd
 #
 ### 5.4. Arrow Function
 ```js
+
+function normalFc (name) {
+  console.log(name);
+};
+
 const normalFc = function (name) {
   console.log(name);
 };
@@ -899,10 +906,11 @@ const arrowFc = (name) => {
 };
 ```
 ```js
+//normalFc
 const add = function (a, b) {
   return a + b;
 }
-
+//arrowFc
 const add = (a, b) => a + b;
 ```
 ![find](noteimgs/section5d.png)

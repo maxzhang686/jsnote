@@ -13,12 +13,32 @@ const entryText = document.getElementById('entry-text');
 const movieList = [];
 
 const checkMovieListNumber = () => {
-  if (movieLost === '') {
+  if (movieList === '') {
     entryText.style.display = 'block';
   }else{
     entryText.style.display = 'none';
   }
 };
+
+
+
+const renderMovieList = (title, image, rating) => {
+  const movieListRoot = document.getElementById('movie-list');
+  const newMovieLi = document.createElement('li');
+  newMovieLi.className = 'movie-element';
+  newMovieLi.innerHTML = `
+    <div class="movie-element__image">
+      <img src="${image}" alt="${title}"></img>
+    </div>
+    <div class="movie-element__info">
+      <h2>${title}</h2>
+      <p>${rating}/5 Start</p>
+    </div>
+  `;
+  
+  movieListRoot.appendChild(newMovieLi);
+  //console.log(newMovieLi);
+}
 
 const toggleBackdrop = () => {
   backdrop.classList.toggle("visible");
@@ -69,6 +89,8 @@ const confirmAddMovieHandler = () => {
   movieList.push(newMovie);
   clearModalInput();
   toggleAddMovieModal();
+  checkMovieListNumber();
+  renderMovieList(newMovie.title, newMovie.image, newMovie.rating);
 };
 
 startAddMovieBtn.addEventListener("click", toggleAddMovieModal);
