@@ -9,23 +9,21 @@ const cancelAddMovieBtn = addModal.querySelector(
 );
 const confirmAddMovieBtn = cancelAddMovieBtn.nextElementSibling;
 const userInputs = addModal.querySelectorAll("input");
-const entryText = document.getElementById('entry-text');
+const entryText = document.getElementById("entry-text");
+const movieListRoot = document.getElementById("movie-list");
 const movieList = [];
 
 const checkMovieListNumber = () => {
-  if (movieList === '') {
-    entryText.style.display = 'block';
-  }else{
-    entryText.style.display = 'none';
+  if (movieList === "") {
+    entryText.style.display = "block";
+  } else {
+    entryText.style.display = "none";
   }
 };
 
-
-
 const renderMovieList = (title, image, rating) => {
-  const movieListRoot = document.getElementById('movie-list');
-  const newMovieLi = document.createElement('li');
-  newMovieLi.className = 'movie-element';
+  const newMovieLi = document.createElement("li");
+  newMovieLi.className = "movie-element";
   newMovieLi.innerHTML = `
     <div class="movie-element__image">
       <img src="${image}" alt="${title}"></img>
@@ -35,10 +33,10 @@ const renderMovieList = (title, image, rating) => {
       <p>${rating}/5 Start</p>
     </div>
   `;
-  
+
   movieListRoot.appendChild(newMovieLi);
   //console.log(newMovieLi);
-}
+};
 
 const toggleBackdrop = () => {
   backdrop.classList.toggle("visible");
@@ -83,7 +81,7 @@ const confirmAddMovieHandler = () => {
   const newMovie = {
     title: titleValue,
     image: imageValue,
-    rating: ratingValue
+    rating: ratingValue,
   };
 
   movieList.push(newMovie);
