@@ -21,7 +21,11 @@ const checkMovieListNumber = () => {
   }
 };
 
-const renderMovieList = (title, image, rating) => {
+const deleteMovieHandler = () => {
+
+}
+
+const renderMovieList = (movieId, title, image, rating) => {
   const newMovieLi = document.createElement("li");
   newMovieLi.className = "movie-element";
   newMovieLi.innerHTML = `
@@ -35,7 +39,8 @@ const renderMovieList = (title, image, rating) => {
   `;
 
   movieListRoot.appendChild(newMovieLi);
-  //console.log(newMovieLi);
+  newMovieLi.addEventListener('click', deleteMovieHandler.bind(null, movieId))
+  console.log(newMovieLi);
 };
 
 const toggleBackdrop = () => {
@@ -79,12 +84,14 @@ const confirmAddMovieHandler = () => {
   }
 
   const newMovie = {
+    movieId: Math.random().toString(),
     title: titleValue,
     image: imageValue,
     rating: ratingValue,
   };
 
   movieList.push(newMovie);
+  console.log(movieList);
   clearModalInput();
   toggleAddMovieModal();
   checkMovieListNumber();

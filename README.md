@@ -68,7 +68,7 @@ isNan(inputNumber)
 
 ### 1.3. Build-in function
 
-**delete space**
+**delete white space**
 ```js
 inputValue.trim();
 ```
@@ -76,7 +76,10 @@ inputValue.trim();
 ```js
 xxx.toUpperCase();
 ```
-
+**A random number**
+```js
+Math.random();
+```
 **change contents of an array**
 ```js
 arrayname.push(objectname);
