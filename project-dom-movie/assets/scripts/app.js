@@ -10,7 +10,7 @@ const cancelAddMovieBtn = addModal.querySelector(
 const confirmAddMovieBtn = cancelAddMovieBtn.nextElementSibling;
 const userInputs = addModal.querySelectorAll("input");
 const entryText = document.getElementById("entry-text");
-const movieListRoot = document.getElementById("movie-list");
+const movieListRootElement = document.getElementById("movie-list");
 const movieList = [];
 
 const checkMovieListNumber = () => {
@@ -21,11 +21,20 @@ const checkMovieListNumber = () => {
   }
 };
 
-const deleteMovieHandler = () => {
-
+const deleteMovieHandler = (movieId) => {
+  let movieIndex = 0;
+  for(const movie of movieList){
+    if (movie.id === movieId ){
+      break;
+    }
+    movieIndex++;  
+  }
+  movieList.splice(movieIndex, 1);
+  movieListRootElement.children[movieIndex].remove();
+  //movieListRootElement.removeChild(movieListRootElement.children[movieIndex]);
 }
 
-const renderMovieList = (movieId, title, image, rating) => {
+const renderMovieList = (id, title, image, rating) => {
   const newMovieLi = document.createElement("li");
   newMovieLi.className = "movie-element";
   newMovieLi.innerHTML = `
@@ -34,13 +43,13 @@ const renderMovieList = (movieId, title, image, rating) => {
     </div>
     <div class="movie-element__info">
       <h2>${title}</h2>
-      <p>${rating}/5 Start</p>
+      <p>${rating} / 5 Start</p>
     </div>
   `;
 
-  movieListRoot.appendChild(newMovieLi);
-  newMovieLi.addEventListener('click', deleteMovieHandler.bind(null, movieId))
-  console.log(newMovieLi);
+  movieListRootElement.appendChild(newMovieLi);
+  newMovieLi.addEventListener('click', deleteMovieHandler.bind(null, id))
+  //console.log(newMovieLi);
 };
 
 const toggleBackdrop = () => {
@@ -84,18 +93,18 @@ const confirmAddMovieHandler = () => {
   }
 
   const newMovie = {
-    movieId: Math.random().toString(),
+    id: Math.random().toString(),
     title: titleValue,
-    image: imageValue,
+    image: "https://miro.medium.com/max/1400/1*DN7ToydkJZEdVaJVK_Nhvw.png",
     rating: ratingValue,
   };
 
   movieList.push(newMovie);
-  console.log(movieList);
+  //console.log(movieList);
   clearModalInput();
   toggleAddMovieModal();
   checkMovieListNumber();
-  renderMovieList(newMovie.title, newMovie.image, newMovie.rating);
+  renderMovieList(newMovie.id, newMovie.title, newMovie.image, newMovie.rating);
 };
 
 startAddMovieBtn.addEventListener("click", toggleAddMovieModal);
