@@ -22,7 +22,7 @@
 - [20. Tooling (Webpack, Babel, …)](#20-tooling-webpack-babel-)
 - [21. Working with Browser Storage](#21-working-with-browser-storage)
 - [22. Browser Support](#22-browser-support)
-- [23. Peactice](#23-peactice)
+- [23. Practice](#23-practice)
 - [24. JavaScript Frameworks](#24-javascript-frameworks)
 - [25. Meta-programming: Symbols, Iterators, Generators, Reflect API & Proxy API](#25-meta-programming-symbols-iterators-generators-reflect-api--proxy-api)
 - [26. NodeJS Introduction](#26-nodejs-introduction)
@@ -82,12 +82,12 @@ Math.random();
 ```
 **change contents of an array**
 ```js
-arrayname.push(objectname);
-arrayname.splice(startIndexNumber, deleteCount, addIterm1, addItem2, ...); 
+arrayName.push(objectName);
+arrayName.splice(startIndexNumber, deleteCount, addItem1, addItem2, ...); 
 ```
 [Array.prototype.splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
 ```js
-btn.addEventListener('click', fucntion)
+btn.addEventListener('click', function)
 alert()
 prompt()//alert and input
 ```
@@ -105,7 +105,7 @@ variable: A data container where the data can be changed during program executio
 ![find](noteimgs/section1b.png)
 
 **set up as a global value:**  
-it's also quite common to use all uppercase characters there and separate words with an underscore, to make it really clear that this is a global value which you just hardcoded into the code.
+it's also quite common to use all uppercase characters there and separate words with an underscore, to make it really clear that this is a global value which you just 'hard coded' into the code.
 ```js
 const ATTACK_VALUE = 10;
 ```
@@ -119,7 +119,7 @@ number = number + newNumber; //same as:
 number += newNumber
 
 number = number + 1; //same as:
-numebr++;
+number++;
 ```
 #
 ### 2.4. Some data types 
@@ -153,7 +153,7 @@ Function parameters are Data that can be provided to the function (input) - avai
 ```js
 function functionName(parameter1, parameter2){
   const result = parameter1 + parameter2;
-  alert(`The resule is ${result}`)
+  alert(`The result is ${result}`)
 }
 ```
 **call function**
@@ -237,10 +237,10 @@ function greetUser(name) {
   let userName = name;
   alert(userName);
 }
-userName = 'Manu';
+userName = 'Menu';
 greetUser('Max');
 ```
-This will actually show an alert that says <span style="color: red">`'Max'`</span> (NOT <span style="color: red">`'Manu'`</span>).
+This will actually show an alert that says <span style="color: red">`'Max'`</span> (NOT <span style="color: red">`'Menu'`</span>).
 
 You might've expected that an error gets thrown because we use and declare <span style="color: red">`userName`</span> more than once - and as you learned, that is not allowed.
 
@@ -249,7 +249,7 @@ It indeed is **not allowed on the same level/ in the same scope**.
 So this would fail:
 ```js
 let userName = 'Max';
-let userName = 'Manu';
+let userName = 'Menu';
 ```
 Why does it work in the first code snippet though?
 
@@ -508,7 +508,7 @@ const logEvent = mode === MODE_ATTACK ? LOG_EVENT_PLAYER_ATTACK : LOG_EVENT_PLAY
 ### 3.6. Statements vs Expressions 
 
 #
-### 3.7. locical Operators - "Tricks" shorthands
+### 3.7. logical Operators - "Tricks" shorthands
 ![find](noteimgs/section3e.png)
 
 
@@ -555,7 +555,7 @@ null && ['Books'];
 ![find](noteimgs/section3h.png)
 
 #
-### 3.8. locical Operators
+### 3.8. logical Operators
 (**Print out**)
 
 As a **reference** which you can come back to (or print out), here's a **quick summary** of how **logical operators** and **comparison operators** behave in JavaScript:
@@ -576,7 +576,7 @@ console.log(userName && ''); // userName is truthy, hence second value is return
 ```
 **Always keep in mind: NO** operator (neither <span style="color: red">`===`</span>, <span style="color: red">`>`</span> etc. nor <span style="color: red">`&&`</span> or <span style="color: red">`||`</span>) changes the variable you might be using in the comparison. In the above examples, the values stored in <span style="color: red">`userName`</span> and <span style="color: red">`altName`</span> **are NEVER changed**.
 
-<span style="color: red">`===`, `>`</span> etc. just **generate new boolean values** which are used in the comparison. <span style="color: red">`||` and `&&`</span> **generate NO booleans**, they just treat the v**alues before and after them as conditions** (which therefore need to yield boolean values and are coerced to booleans if required).
+<span style="color: red">`===`, `>`</span> etc. just **generate new boolean values** which are used in the comparison. <span style="color: red">`||` and `&&`</span> **generate NO booleans**, they just treat the **values before and after them as conditions** (which therefore need to yield boolean values and are coerced to booleans if required).
 
 Because of the above-described behaviors, you often use <span style="color: red">`||`</span> in JavaScript to assign default/ fallback values to variables/ constants:
 ```js
@@ -647,8 +647,8 @@ for (let i = 10; i > 0) {
 #### 3.10.2. for-of loop
 
 ```js
-for (let i = 0; i < battlelog.length, i++) {
-  console.log(battlelog[i]);
+for (let i = 0; i < battleLog.length, i++) {
+  console.log(battleLog[i]);
 }
 
 for (const logEntry of battleLog){
@@ -705,7 +705,7 @@ do {
 
 **Break** indeed does stop the entire loop execution immediately and moves on to code execution after the loop.  
 
-**Continuew** The current iteration is stopped/ skipped and the next iteration (of the same loop) starts.
+**Continue** The current iteration is stopped/ skipped and the next iteration (of the same loop) starts.
 ```js
 for (let i = 0; i < 5; i++ ) {
   console.log(i);
@@ -783,7 +783,7 @@ if (name === "Ivy") {
   //let hobbies = ["Cooking", "Coding"];
 }
 console.log(hobbies);
-//throw an error whhile using let.
+//throw an error while using let.
 ```
 
 In the new project, **do not** use `var` anymore.
@@ -794,7 +794,7 @@ In the new project, **do not** use `var` anymore.
 ```js
 console.log(name);
 var name = "Max";
-//output: undefind
+//output: undefined
 ```
 
 ```js
@@ -844,9 +844,9 @@ More on Primitive vs Reference Values:  [Link](https://academind.com/learn/javas
 
 ***
 ## 5. A Closer Look at Functions
-- Different way of creating Funciton
+- Different way of creating Function
 - Anonymous Function (匿名函数)
-- Callback Function & funcion in funcion
+- Callback Function & function in function
 - Default Arguments & Rest Operator
 - bind() & more
 
@@ -972,7 +972,7 @@ But when using arrow functions, curly braces can have two meanings:
 2) Create an object which you want to return (in shorter function body form)
 
 To "tell" JavaScript what you want to do, wrap the expression (e.g. object creation) in parentheses like shown above.
-* explam more in other section.
+* explain more in other section.
 
 #
 ### 5.5. default Arguments
@@ -1007,7 +1007,7 @@ console.log(sumUp(1, 2, 3, 4));
 //output: 10
 ```
 
-It bundles all arguments beyound the first 2 argument into an array.
+It bundles all arguments beyond the first 2 argument into an array.
 ```js
 const sumUp = (a, b, ...number) => {
   let sum = 0;
@@ -1258,7 +1258,7 @@ section.classList.contains('xxx');//Returns a Boolean value, indicating whether 
 ![find](noteimgs/section6j.png)
 
 **creating via HTML**
-(not recommemded)
+(not recommended)
 ```js
 const ulList = document.querySelector('ul');
 const p = document.querySelector('p');
@@ -1310,7 +1310,7 @@ ul.lastElementChild.before(newLi);//before the last child.
 ul.lastElementChild.after(newLi);
 ul.firstElementChild.replaceWith(newLi);//replace the first child.
 ```
-*`before, after` not suppor `IE` & `safari`, so if you want to insert an element to a specific position, use **`insertAdjacentElement`**
+*`before, after` not support `IE` & `safari`, so if you want to insert an element to a specific position, use **`insertAdjacentElement`**
 
 ```js
 const list = document.querySelector('ul');
@@ -1351,7 +1351,7 @@ example:
 ```
 if you get all the `li` first, add an new element (`<li>4</li>`) to the ul, and get all `li` again after.  
 Live node list will get a array `HTMLCollection(4)[]`;  
-Static node lists will get a array `Nodelist(3)[]`, it is not going to get the new `li` which you just add.   
+Static node lists will get a array `NodeList(3)[]`, it is not going to get the new `li` which you just add.   
 Look at the example below:
 ![find](noteimgs/section6l.png)  
 *Live node not means it is better.   
@@ -1498,7 +1498,7 @@ someElement.textContent = someElement.textContent + 'More text!';
 ***
 ## 22. Browser Support
 ***
-## 23. Peactice
+## 23. Practice
 ***
 ## 24. JavaScript Frameworks
 ***
@@ -1534,12 +1534,12 @@ someElement.textContent = someElement.textContent + 'More text!';
 color,theme, Icon, extensions,
 
 **Shortcuts**
-Toggle bolck comment: `option + shift + a` ;  
+Toggle block comment: `option + shift + a` ;  
 Toggle line comment: `cmd + /`;  
 Add Selection To Next Find Match: `cmd+d`;  
 Add Selection all Match: `cmd + shift + L`;  
-move line: `option + top/buttom`;  
-copy line: `option + shift + top/buttom`;  
+move line: `option + top/button`;  
+copy line: `option + shift + top/button`;  
 delete whole line: `shift + cmd + K`
 
 
@@ -1563,4 +1563,8 @@ hints: `shift + cmd + space`;
 https://medium.com/@jbbpatel94/difference-between-offsetheight-clientheight-and-scrollheight-cfea5c196937
 
 
+#
+### 36.5. Need be careful
 
+* `this`
+* `let` & `const` (let for changing value)
