@@ -1458,8 +1458,12 @@ someElement.textContent = someElement.textContent + 'More text!';
 #
 ### 6.14. project
 
-
-
+Something need be read again:  
+clone dom, replace
+```js
+confirmDeleteMovieBtn.replaceWith(confirmDeleteMovieBtn.cloneNode(true));
+```
+bind()  
 
 
 ***
