@@ -1465,6 +1465,8 @@ confirmDeleteMovieBtn.replaceWith(confirmDeleteMovieBtn.cloneNode(true));
 ```
 bind()  
 
+[DOM - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
+
 
 ***
 ## 7. Arrays & Iterables
