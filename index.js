@@ -140,3 +140,7 @@ isLoggedIn && ['Books'];
 //return: false
 null && ['Books'];
 //return: null
+
+
+JSON.stringify();
+JSON.parse();
