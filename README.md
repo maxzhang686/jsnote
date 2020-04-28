@@ -1470,6 +1470,55 @@ bind()
 
 ***
 ## 7. Arrays & Iterables
+
+- Creating Arrays
+- Important Arrays Methods
+- Maps &  Sets
+
+#
+### 7.1. Creating arrays
+![find](noteimgs/section8a.png)
+```js
+const numbers = [1, 2, 3];
+//return [1, 2, 3]
+
+const moreNumbers = new Array(1, 5);
+//return [1, 5]
+
+const yetMoreNumbers = Array.of(5);
+//return [5]
+
+const moreNumbers1 = new Array(5);
+//return [empty * 5]
+
+const moreNumbersFrom = Array.from("Hi!");
+console.log(moreNumbersFrom);
+//return ["H", "i", "!"]
+```
+
+#
+### adding & removing 
+```js
+const numbers = [2, 2, 2]; 
+numbers.push(6);//[2, 2, 2, 6]
+numbers.unshift(1);//[1, 2, 2, 2, 6]//at the beginning
+
+numbers.pop();//
+//return [1, 2, 2, 2]
+
+numbers.shift();//return [2, 2, 2]
+
+numbers[1] = 3;//[2, 3, 2]
+numbers[6] = 6;//[2, 3, 2, empty × 3, 6]
+```
+
+
+```js
+arrayName.splice(startIndexNumber, deleteCount, addItem1, addItem2, ...); 
+```  
+[Array.prototype.splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
+
+
 ***
 ## 8. Objects
 ***
