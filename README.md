@@ -700,6 +700,10 @@ do {
 } while (j < 3) 
 //output: 3
  ```
+
+**forEach()**  
+read more on array section [forEach() & map()](#76-forEach())
+
 #
 ### 3.11. break and continue in Loop
 
@@ -1497,33 +1501,101 @@ console.log(moreNumbersFrom);
 ```
 
 #
-### adding & removing 
+### 7.2. adding & removing 
 ```js
 const numbers = [2, 2, 2]; 
+
 numbers.push(6);//[2, 2, 2, 6]
 numbers.unshift(1);//[1, 2, 2, 2, 6]//at the beginning
 
-numbers.pop();//
-//return [1, 2, 2, 2]
-
-numbers.shift();//return [2, 2, 2]
+numbers.pop();//return [1, 2, 2, 2] delete last one 
+numbers.shift();//return [2, 2, 2] delete first one
 
 numbers[1] = 3;//[2, 3, 2]
 numbers[6] = 6;//[2, 3, 2, empty × 3, 6]
 ```
 
-
+[Array.prototype.splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
 ```js
 arrayName.splice(startIndexNumber, deleteCount, addItem1, addItem2, ...); 
 ```  
-[Array.prototype.splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
+
+#
+### 7.3. Selecting Ranges & Creating Copies
+
+```js
+const newArray = arrayName.slice(); //return a new array(copy).
+const newArray = arrayName.slice(arrayIndexStart, arrayIndexEnd); 
+//return a new array.
+```
+Return (copy) **`a new array`** after add items at the end.
+```js
+const newArray = arrayName.concat([newItem1, newItem2, ...]);
+```
+
+#
+### 7.4. Retrieving Indexes with indexOf() /& lastIndexOf()
+*not work for object. 
+```js
+arrayName.indexOf(itemValue); //from first one 
+arrayName.lastIndexOf(itemValue); //from last one 
+```
+If cant find, return '-1'.
+```js
+console.log(arrayName.includes(itemValue));//return true/false
+```
+
+#
+### 7.5. find() and findIndex()
+finding stuff in object.  
+`find()` dose not create a copy. 
+```js
+const inventory = [
+  {name: 'apples', quantity: 2},
+  {name: 'cherries', quantity: 5}
+];
+const result = inventory.find( (item,index, items) => { 
+  return item.name === 'cherries'} );
+const resultIndex = inventory.findIndex( (item,index, items) => { 
+  return item.name === 'cherries'} );
+console.log(result, resultIndex); // { name: 'cherries', quantity: 5 } 1
+```
+
+#
+### 7.6. forEach() 
+```js
+const arrayName = [1, 2, 3, 4, 5, 6];
+const newArray = [];
+
+arrayName.forEach((element, index, elements)=>{
+  newArray.push(element);
+})
+console.log(newArray);//[1, 2, 3, 4, 5, 6]
+```
+#
+### 7.7. map()
+#
+### sort() and reverse()
+#
+### 
+#
+### 
+#
+### 
+#
+### 
+#
+### 
+
+
+
 
 
 ***
 ## 8. Objects
 ***
 ## 9. Classes & Object-oriented Programming (OOP)
-
+                                                                                                                                                                                                              
 ***
 ## 10. Constructor Functions & Prototypes
 ***

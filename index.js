@@ -21,3 +21,25 @@ console.log(numbers);
 // numbers.splice(0, 3);
 
 // console.log(numbers);
+
+const arrayName = [1, 2, 3, 4, 5, 6]
+// console.log(arrayName.findIndex());
+
+// const inventory = [
+//   {name: 'apples', quantity: 2},
+//   {name: 'cherries', quantity: 5}
+// ];
+// const result = inventory.find( (item,index, items) => { 
+//   return item.name === 'cherries'} );
+
+// const resultIndex = inventory.findIndex( (item,index, items) => { 
+//   return item.name === 'cherries'} );
+
+// console.log(result, resultIndex); // { name: 'cherries', quantity: 5 }
+// console.log(arrayName.includes(7));
+const newArray = [];
+
+arrayName.forEach((element, index, elements)=>{
+  newArray.push(element);
+})
+console.log(newArray);
