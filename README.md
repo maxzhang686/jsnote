@@ -1502,6 +1502,8 @@ console.log(moreNumbersFrom);
 
 #
 ### 7.2. adding & removing 
+push(), unshift(), pop(), shift()
+
 ```js
 const numbers = [2, 2, 2]; 
 
@@ -1522,20 +1524,23 @@ arrayName.splice(startIndexNumber, deleteCount, addItem1, addItem2, ...);
 
 #
 ### 7.3. Selecting Ranges & Creating Copies
+slice(), concat()
+
 
 ```js
 const newArray = arrayName.slice(); //return a new array(copy).
 const newArray = arrayName.slice(arrayIndexStart, arrayIndexEnd); 
 //return a new array.
 ```
+
 Return (copy) **`a new array`** after add items at the end.
 ```js
 const newArray = arrayName.concat([newItem1, newItem2, ...]);
 ```
 
 #
-### 7.4. Retrieving Indexes with indexOf() /& lastIndexOf()
-*not work for object. 
+### 7.4. Retrieving Indexes with indexOf() & lastIndexOf()
+return the index number. *not work for object. 
 ```js
 arrayName.indexOf(itemValue); //from first one 
 arrayName.lastIndexOf(itemValue); //from last one 
@@ -1565,27 +1570,100 @@ console.log(result, resultIndex); // { name: 'cherries', quantity: 5 } 1
 ### 7.6. forEach() 
 ```js
 const arrayName = [1, 2, 3, 4, 5, 6];
+const tax = 0.1;
 const newArray = [];
 
-arrayName.forEach((element, index, elements)=>{
-  newArray.push(element);
+arrayName.forEach((element, idx, elements)=>{
+  const newElement = {index: idx,  number: element + tax};
+  newArray.push(newElement);
 })
-console.log(newArray);//[1, 2, 3, 4, 5, 6]
+console.log(newArray);
+//[{index: 0, number: 1.1}, {index: 1, number: 2.1}, {…}, {…}, {…}, {…}]
 ```
 #
 ### 7.7. map()
+```js
+const arrayName = [1, 2, 3, 4, 5, 6];
+const tax = 0.1;
+
+const newArray = arrayName.map((element, idx, elements)=>{
+  const newElement = {index: idx,  number: element + tax};
+  return newElement;
+});
+
+console.log(newArray);
+//[{index: 0, number: 1.1}, {index: 1, number: 2.1}, {…}, {…}, {…}, {…}]
+```
+
+
+
 #
-### sort() and reverse()
+### 7.8. sort() and reverse()
+```js
+const arrayName = [71, 22, 103, 54, 65, 86];
+const tax = 0.1;
+
+const newArray = arrayName.sort((a, b)=> {
+  if (a > b){
+    return 1;
+  } else if (a === b){
+    return 0;
+  } else {
+    return -1;
+  }
+});
+
+console.log(newArray);
+//[22, 54, 65, 71, 86, 103]
+```
 #
-### 
+### 7.9. Filtering Arrays with filter()
+```js
+const arrayName = [71, 22, 103, 54, 65, 86];
+
+const filterArray = arrayName.filter((element, index, elements) => {
+  return element > 50;
+})
+console.log(`copy:`,filterArray);//[71, 103, 54, 65, 86]
+```
+
 #
-### 
+### 7.10. reduce()
+```js
+const arrayName = [1.1, 2.2, 3, 4, 5, 6];
+
+const sum = arrayName.reduce((prevValue, curValue, index , Elements) => {
+  return prevValue + curValue;
+}, 0);
+console.log(sum);//21.3x
+```
+
+
+With all these useful array methods you learned about, it's important to understand how you can combine them. Let's take **`map()`** and **`reduce()`** as an example:
+```js
+const originalArray = [{price: 10.99}, {price: 5.99}, {price: 29.99}];
+const transformedArray = originalArray.map(obj => obj.price); // produces [10.99, 5.99, 29.99]
+const sum = transformedArray.reduce((sumVal, curVal) => sumVal + curVal, 0); // => 46.97
+```
+Of course, you could skip the map step and just add the extraction logic to **`reduce()`**:
+```js
+const originalArray = [{price: 10.99}, {price: 5.99}, {price: 29.99}];
+const sum = originalArray.reduce((sumVal, curVal) => sumVal + curVal.price, 0); // => 46.97
+```
+But let's say you have a more complex extraction logic and hence want to split this into multiple method calls. Or you have a re-usable map function which you want to be able to use in different places of your app. Then you can still write the initial example in a more concise way if you **leverage method chaining**:
+```js
+const originalArray = [{price: 10.99}, {price: 5.99}, {price: 29.99}];
+const sum = originalArray.map(obj => obj.price)
+    .reduce((sumVal, curVal) => sumVal + curVal, 0); // => 46.97
+```   
+We call **`.reduce()`** directly on the result of **`map()`** (which produces an array, that's why this is possible). Hence we can avoid storing the mapped array in a separate constant or variable that we might not need in any other place.
+
 #
-### 
+### 7.11.  
 #
-### 
+### 7.12.  
 #
-### 
+### 7.13.  
 
 
 

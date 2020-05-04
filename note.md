@@ -6,3 +6,5 @@ JSON.parse();
 
 let list = this.data.list;
 let {list} = this.data;
+
+different map forEach 
