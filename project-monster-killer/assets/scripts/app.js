@@ -230,10 +230,11 @@ function healPlayerHandler() {
 }
 
 function printLogHandler() {
-  for (let i = 0; i < 3; i++) {
-    console.log('------------');
-  }
-  let j = 0;
+  // for (let i = 0; i < 3; i++) {
+  //   console.log('------------');
+  // }
+
+  //let j = 0;
   // outerWhile: do {
   //   console.log('Outer', j);
   //   innerFor: for (let k = 0; k < 5; k++) {
@@ -249,6 +250,7 @@ function printLogHandler() {
   //   i--;
   //   console.log(i);
   // }
+
   // for (let i = 0; i < battleLog.length; i++) {
   //   console.log(battleLog[i]);
   // }

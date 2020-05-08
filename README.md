@@ -80,12 +80,14 @@ xxx.toUpperCase();
 ```js
 Math.random();
 ```
-**change contents of an array**
+**change contents of an array**  
+[Array.prototype.splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
 ```js
 arrayName.push(objectName);
 arrayName.splice(startIndexNumber, deleteCount, addItem1, addItem2, ...); 
 ```
-[Array.prototype.splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
+
+
 ```js
 btn.addEventListener('click', function)
 alert()
@@ -1582,6 +1584,7 @@ console.log(newArray);
 ```
 #
 ### 7.7. map()
+循环
 ```js
 const arrayName = [1, 2, 3, 4, 5, 6];
 const tax = 0.1;
@@ -1599,6 +1602,7 @@ console.log(newArray);
 
 #
 ### 7.8. sort() and reverse()
+排序
 ```js
 const arrayName = [71, 22, 103, 54, 65, 86];
 const tax = 0.1;
@@ -1618,6 +1622,7 @@ console.log(newArray);
 ```
 #
 ### 7.9. Filtering Arrays with filter()
+筛选
 ```js
 const arrayName = [71, 22, 103, 54, 65, 86];
 
@@ -1629,6 +1634,7 @@ console.log(`copy:`,filterArray);//[71, 103, 54, 65, 86]
 
 #
 ### 7.10. reduce()
+处理
 ```js
 const arrayName = [1.1, 2.2, 3, 4, 5, 6];
 
@@ -1638,7 +1644,7 @@ const sum = arrayName.reduce((prevValue, curValue, index , Elements) => {
 console.log(sum);//21.3x
 ```
 
-
+#
 With all these useful array methods you learned about, it's important to understand how you can combine them. Let's take **`map()`** and **`reduce()`** as an example:
 ```js
 const originalArray = [{price: 10.99}, {price: 5.99}, {price: 29.99}];
@@ -1659,21 +1665,88 @@ const sum = originalArray.map(obj => obj.price)
 We call **`.reduce()`** directly on the result of **`map()`** (which produces an array, that's why this is possible). Hence we can avoid storing the mapped array in a separate constant or variable that we might not need in any other place.
 
 #
-### 7.11.  
+### 7.11.  split() and join()
+string to array
+
+```js
+const data = "Sydney;Canberra;Melbourne";
+const array = data.split(";");
+console.log(array);//["Sydney", "Canberra", "Melbourne"]
+
+const nameFragments = ['Max','Zhang'];
+const name = nameFragments.join(' ');
+console.log(name);//Max Zhang
+```
+
 #
-### 7.12.  
+### 7.12.  Spread Operator (...)
+
+spread for copy or 
+```js
+const numbers = [1, 2, 3]; 
+const newNumber = [...numbers];
+
+numbers.push(4);
+console.log(numbers, newNumber);
+//[1, 2, 3, 4]    //[1, 2, 3]
+console.log(Math.min(...numbers));//1
+```
+
+**Copy:**  
+包括上面的所有复制，object的refer都是相同的。（详情看堆内存详解）  
+改变原有array的object值，复制的array也会随之改变。（引申：浅拷贝，深拷贝）
+```js
+const numbers = [1, 2, 3]; 
+const newNumber = [...numbers];
+
+numbers.push(4);
+console.log(numbers, newNumber);
+//[1, 2, 3, 4]    //[1, 2, 3]
+console.log(Math.min(...numbers));//1
+
+const name = [{age : 1},{age : 2}];
+const newName = [...name];
+
+name.push({age : 3});
+console.log(name, newName);
+//[{age: 1}, {age: 2}, {age: 3}]
+//[{age: 1}, {age: 2}]
+
+name[0].age = 4;
+console.log(name, newName);
+//[{age: 4}, {age: 2}, {age: 3}]
+//[{age: 4}, {age: 2}]
+```
+
+
 #
-### 7.13.  
+### 7.13.  Array Destructuring
 
+```js
+const nameFragments = ['Max','Zhang', 'male', 28];
+const [firstName, LastName, ...others] = nameFragments;
+console.log(firstName,LastName, others);
+//Max Zhang ["male", 28]
+```
 
+#
+### maps and sets 
+3 major iterable data structures.(Array, Set, Map)
 
+![find](noteimgs/section7b.png)
+???????????????????????????????????
 
+**Map & object**
+![find](noteimgs/section7c.png)
+
+#
+### WeakSet & WeakMap
 
 ***
 ## 8. Objects
 ***
 ## 9. Classes & Object-oriented Programming (OOP)
-                                                                                                                                                                                                              
+             
 ***
 ## 10. Constructor Functions & Prototypes
 ***

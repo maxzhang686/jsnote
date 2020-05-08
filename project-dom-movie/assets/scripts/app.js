@@ -44,8 +44,9 @@ const startDeleteMovieHandler = (movieId) => {
 
   const cancelDeleteMovieBtn = deleteModal.querySelector(".btn--passive");
   let confirmDeleteMovieBtn = deleteModal.querySelector(".btn--danger");
-  
+  //clean Memory
   confirmDeleteMovieBtn.replaceWith(confirmDeleteMovieBtn.cloneNode(true));
+  
   confirmDeleteMovieBtn = deleteModal.querySelector(".btn--danger");
   
   cancelDeleteMovieBtn.removeEventListener('click', closeDeleteMovieModal);

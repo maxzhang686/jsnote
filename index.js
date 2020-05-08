@@ -16,7 +16,8 @@ numbers[6] = 6;//[2, 3, 2, empty × 3, 6]
 console.log(numbers);
  */
 
-/* const numbers = [2, 2, 2, 0, 1, 2, 3]; 
+/* 
+const numbers = [2, 2, 2, 0, 1, 2, 3]; 
 numbers.splice(-3);
 numbers.splice(0, 3);
 
@@ -80,7 +81,7 @@ const filterArray = arrayName.filter((element, index, elements) => {
 console.log(`copy:`,filterArray);//[71, 103, 54, 65, 86]
  */
 
-
+/* 
 const arrayName = [1.1, 2.2, 3, 4, 5, 6];
 
 // let sum = 0;
@@ -93,3 +94,54 @@ const sum = arrayName.reduce((prevValue, curValue, index , Elements) => {
   return prevValue + curValue;
 }, 0);
 console.log(sum);//21.3x
+ */
+
+/* 
+const data = "Sydney;Canberra;Melbourne";
+const array = data.split(";");
+console.log(array);//["Sydney", "Canberra", "Melbourne"]
+
+const nameFragments = ['Max','Zhang'];
+const name = nameFragments.join(' ');
+console.log(name);//Max Zhang
+ */
+/* 
+const numbers = [1, 2, 3]; 
+const newNumber = [...numbers];
+
+numbers.push(4);
+console.log(numbers, newNumber);
+//[1, 2, 3, 4]    //[1, 2, 3]
+console.log(Math.min(...numbers));//1
+
+const name = [{age : 1},{age : 2}];
+const newName = [...name];
+
+name.push({age : 3});
+console.log(name, newName);
+//[{age: 1}, {age: 2}, {age: 3}]
+//[{age: 1}, {age: 2}]
+
+name[0].age = 4;
+console.log(name, newName);
+//[{age: 4}, {age: 2}, {age: 3}]
+//[{age: 4}, {age: 2}]
+ */
+
+/* 
+const nameFragments = ['Max','Zhang', 'male', 28];
+const [firstName, LastName, ...others] = nameFragments;
+console.log(firstName,LastName, others);
+ */
+
+
+const array = [];
+
+const person1 = {name: 'max'};
+const person2 = {name: 'ivy'};
+
+array.push(person1,person2);
+
+console.log(array)
+
+
