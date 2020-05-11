@@ -1243,6 +1243,7 @@ via inline style
 const task1 = document.querySelector("li");
 
 task1.style.backgroundColor = "black";
+task1.style['background-color'] = "black";
 task1.style.color = "white";
 
 const h1 = document.getElementsByTagName('h1');
@@ -1665,7 +1666,7 @@ const sum = originalArray.map(obj => obj.price)
 We call **`.reduce()`** directly on the result of **`map()`** (which produces an array, that's why this is possible). Hence we can avoid storing the mapped array in a separate constant or variable that we might not need in any other place.
 
 #
-### 7.11.  split() and join()
+### 7.11. split() and join()
 string to array
 
 ```js
@@ -1679,7 +1680,7 @@ console.log(name);//Max Zhang
 ```
 
 #
-### 7.12.  Spread Operator (...)
+### 7.12. Spread Operator (...)
 
 spread for copy or 
 ```js
@@ -1720,7 +1721,7 @@ console.log(name, newName);
 
 
 #
-### 7.13.  Array Destructuring
+### 7.13. Array Destructuring
 
 ```js
 const nameFragments = ['Max','Zhang', 'male', 28];
@@ -1730,7 +1731,7 @@ console.log(firstName,LastName, others);
 ```
 
 #
-### maps and sets 
+### 7.14. maps and sets 
 3 major iterable data structures.(Array, Set, Map)
 
 ![find](noteimgs/section7b.png)
@@ -1740,10 +1741,127 @@ console.log(firstName,LastName, others);
 ![find](noteimgs/section7c.png)
 
 #
-### WeakSet & WeakMap
+### 7.15. WeakSet & WeakMap
+
+
+#
+### 7.16. Question 小问题
+*两个array变成一个object：{array1 : array2}
+
+*array 前面的property名字变换：
+```js
+const array = [1, 2, 3, 4, 5, 6];
+const arrayMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
+
+const mapArray = arrayMonth.map( (val)=> { 
+  return { [array[idx] + `月`]: val};
+});
+console.log(mapArray);
+// 0: {1月: "Jan"}
+// 1: {2月: "Feb"}
+// 2: {3月: "Mar"}
+// 3: {4月: "Apr"}
+// 4: {5月: "May"}
+```
 
 ***
 ## 8. Objects
+
+- 
+
+#
+### 8.1. Objects & Primitive Values
+
+Objects are **reference values** - you learned that.
+
+It might not have been obvious yet but it's also important to recognize that, in the end, **objects are of course made up of primitive values**.
+
+Here's an example:
+```js
+const complexPerson = {
+    name: 'Max',
+    hobbies: ['Sports', 'Cooking'],
+    address: {
+        street: 'Some Street 5',
+        stateId: 5,
+        country: 'Germany',
+        phone: {
+            number: 12 345 678 9,
+            isMobile: true
+        }
+    },
+};
+```
+Event though **`complexPerson`** has multiple nested reference values (nested arrays and objects), you end up with primitive values if you drill into the object.
+
+**`name`** holds a string (**`'Max'`**) => Primitive value
+
+**`hobbies`** holds an array (i.e. a reference value) which is full of strings (**`'Sports'`**, **`'Cooking'`**) => Primitive values
+
+**`address`** holds an object which in turn holds a mixture of primitive values like **`'Some Street 5'`** and nested objects (**`phone`**), but if you dive into **`phone`**, you find only numbers and booleans in there => **Primitive values**
+
+So you could say: **Primitive values** are the **core building blocks** that hold your data, **objects (and arrays)** are helpful for **organizing** and **working** with that data.
+
+#
+### 8.2. Adding, Modifying & Deleting
+Adding, Modifying & Deleting Properties  
+```js
+const person = {
+  name: 'Max',
+  age: 30,
+  hobbies: ['Sports', 'Cooking'],
+  greet: function() {
+    alert('Hi there!');
+  }
+};
+//person.greet();
+person.admin = true;
+delete person.age;
+console.log(person);
+//{name: "Max", hobbies: Array(2), admin: true, greet: ƒ}
+```
+
+
+### 8.3. Dynamic Property Access & Setting Properties Dynamically
+Property Types & Property Order
+```js
+
+const person = {
+  99: 20,
+  1: 30
+};
+console.log(person);//return {1: 30, 99: 20}
+//1 will be the first one. only numbers.
+```
+
+```js
+const person = {
+  'first name': 'Max',
+  1.9: 30
+};
+
+console.log(person['first name']);//Max
+console.log(person[1.9]);//30
+```
+
+```js
+const propKey = 'field 12';
+const person = {
+    [propKey]: 'Max'
+};
+console.log(person['field 12']);
+```
+
+#
+### 8.4. shorthand property syntax
+```js
+const newObject = {
+  propertyName: propertyName,
+  propertyName1  
+}
+```
+
+
 ***
 ## 9. Classes & Object-oriented Programming (OOP)
              
