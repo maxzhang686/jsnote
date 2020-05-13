@@ -164,3 +164,13 @@ const person = {
 
 console.log(person);//1 will be the first one.
  */
+
+const movie = {
+  info: {
+    title: "New",
+  },
+  id: 123,
+};
+const { info: newTitle, ...others } = movie;
+console.log(newTitle.title);
+console.log(others);

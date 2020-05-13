@@ -704,7 +704,7 @@ do {
  ```
 
 **forEach()**  
-read more on array section [forEach() & map()](#76-forEach())
+read more on array section [forEach() & map()](#77-forEach())
 
 #
 ### 3.11. break and continue in Loop
@@ -1545,13 +1545,11 @@ const newArray = arrayName.concat([newItem1, newItem2, ...]);
 ### 7.4. Retrieving Indexes with indexOf() & lastIndexOf()
 return the index number. *not work for object. 
 ```js
-arrayName.indexOf(itemValue); //from first one 
+arrayName.indexOf(itemValue); //from first one, return index-number
 arrayName.lastIndexOf(itemValue); //from last one 
 ```
-If cant find, return '-1'.
-```js
-console.log(arrayName.includes(itemValue));//return true/false
-```
+
+
 
 #
 ### 7.5. find() and findIndex()
@@ -1570,7 +1568,16 @@ console.log(result, resultIndex); // { name: 'cherries', quantity: 5 } 1
 ```
 
 #
-### 7.6. forEach() 
+### 7.6. includes()
+
+If cant find, return '-1'.
+```js
+console.log(arrayName.includes(itemValue));//return true/false
+```
+
+
+#
+### 7.7. forEach() 
 ```js
 const arrayName = [1, 2, 3, 4, 5, 6];
 const tax = 0.1;
@@ -1584,7 +1591,7 @@ console.log(newArray);
 //[{index: 0, number: 1.1}, {index: 1, number: 2.1}, {…}, {…}, {…}, {…}]
 ```
 #
-### 7.7. map()
+### 7.8. map()
 循环
 ```js
 const arrayName = [1, 2, 3, 4, 5, 6];
@@ -1602,7 +1609,7 @@ console.log(newArray);
 
 
 #
-### 7.8. sort() and reverse()
+### 7.9. sort() and reverse()
 排序
 ```js
 const arrayName = [71, 22, 103, 54, 65, 86];
@@ -1622,7 +1629,7 @@ console.log(newArray);
 //[22, 54, 65, 71, 86, 103]
 ```
 #
-### 7.9. Filtering Arrays with filter()
+### 7.10. Filtering Arrays with filter()
 筛选
 ```js
 const arrayName = [71, 22, 103, 54, 65, 86];
@@ -1634,7 +1641,7 @@ console.log(`copy:`,filterArray);//[71, 103, 54, 65, 86]
 ```
 
 #
-### 7.10. reduce()
+### 7.11. reduce()
 处理
 ```js
 const arrayName = [1.1, 2.2, 3, 4, 5, 6];
@@ -1666,7 +1673,7 @@ const sum = originalArray.map(obj => obj.price)
 We call **`.reduce()`** directly on the result of **`map()`** (which produces an array, that's why this is possible). Hence we can avoid storing the mapped array in a separate constant or variable that we might not need in any other place.
 
 #
-### 7.11. split() and join()
+### 7.12. split() and join()
 string to array
 
 ```js
@@ -1680,7 +1687,7 @@ console.log(name);//Max Zhang
 ```
 
 #
-### 7.12. Spread Operator (...)
+### 7.13. Spread Operator (...)
 
 spread for copy or 
 ```js
@@ -1721,7 +1728,7 @@ console.log(name, newName);
 
 
 #
-### 7.13. Array Destructuring
+### 7.14. Array Destructuring
 
 ```js
 const nameFragments = ['Max','Zhang', 'male', 28];
@@ -1731,7 +1738,7 @@ console.log(firstName,LastName, others);
 ```
 
 #
-### 7.14. maps and sets 
+### 7.15. maps and sets 
 3 major iterable data structures.(Array, Set, Map)
 
 ![find](noteimgs/section7b.png)
@@ -1741,11 +1748,11 @@ console.log(firstName,LastName, others);
 ![find](noteimgs/section7c.png)
 
 #
-### 7.15. WeakSet & WeakMap
+### 7.16. WeakSet & WeakMap
 
 
 #
-### 7.16. Question 小问题
+### 7.17. Question 小问题
 *两个array变成一个object：{array1 : array2}
 
 *array 前面的property名字变换：
@@ -1852,6 +1859,29 @@ const person = {
 console.log(person['field 12']);
 ```
 
+**output dynamic properties**
+```js
+  const movie = {
+    info: {
+      title: newTitle,
+      [newExtraName]: newExtraValue,
+    },
+    id: Math.random()
+  };
+
+  movies.forEach((movie) => {
+    const movieEleLi = document.createElement("li");
+    let text = movie.info.title + " - ";
+    for (const key in movie.info) {
+      if (key !== "title") {
+        text = text + `${key} : ${movie.info[key]}`;
+      }
+    }
+    movieEleLi.textContent = text;
+    movieList.appendChild(movieEleLi);
+  });
+```
+
 #
 ### 8.4. shorthand property syntax
 ```js
@@ -1860,6 +1890,71 @@ const newObject = {
   propertyName1  
 }
 ```
+
+#
+### 8.5. filter 
+
+```js
+const movie = {
+  info: {
+    title: newTitle
+  }
+  };
+
+const filterText = document.getElementById("filter-title").value;
+
+const filterMovie = !filterText
+  ? movies
+  : movies.filter((movie) => movie.info.title.includes(filterText));
+```
+
+#
+### 8.6. chaining 
+
+#
+### 8.7. Object Spread Operator
+**(...)**  
+[link to array](#713-Spread-Operator)
+
+#
+### 8.8. Object.assign()
+Deep copy
+
+#
+### 8.9. Object Destructuring
+
+```js
+const movie = {
+  info: {
+    title: 'New'
+  },
+  id: 123
+}
+const { info, ...others } = movie;
+console.log(info.title);//New
+console.log(others);//{id: 123}
+
+//rename　
+const { info: newInfo, ...others } = movie;
+console.log(newInfo.title);//New
+```
+
+#
+### Checking for Property existence 
+```js
+const movie = {
+  info: {
+    title: 'New'
+  }
+}
+if ('info' in movie){ };
+```
+
+#
+### this
+**Very important part!!!**
+
+
 
 
 ***
