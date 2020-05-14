@@ -5,14 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="index.js" defer></script>
+  <style>
+    .demo :nth-child(2) {
+      color: #ff0000;
+    }
+    .demo li:nth-of-type(2) {
+      color: #00ff00;
+    }
+  </style>
 </head>
 <body>
-<!-- <div >
-  <iframe autoplay="1" width="800" height="450" src="https://vip.okokbo.com/share/nbx6CoOYHaf77H17" allowfullscreen></iframe>
-</div> -->
-
 <div>
-  <ul>
+  <ul class="demo">
+    <p>zero</p>
+    <p>second zero</p>
+    <li>one</li>
+    <li>two</li>
     <li class="xxx">1</li>
     <li class="xxx">2</li>
     <li class="xxx">3</li>
@@ -20,3 +28,10 @@
 </div>
 </body>
 </html>
+
+
+
+<!-- <div >
+  <iframe autoplay="1" width="800" height="450" src="https://vip.okokbo.com/share/nbx6CoOYHaf77H17" allowfullscreen></iframe>
+</div> -->
+

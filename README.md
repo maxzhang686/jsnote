@@ -1954,8 +1954,11 @@ if ('info' in movie){ };
 ### this
 **Very important part!!!**
 
+what is this? 
 
+bind()
 
+call() & apply()
 
 ***
 ## 9. Classes & Object-oriented Programming (OOP)
