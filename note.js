@@ -120,6 +120,8 @@ newLi.textContent = "Number 4";
  */
 //secondLi.insertAdjacentElement('afterend',newLi);
 
+
+/* 
 const usrInput = '';
 const userName = usrInput || 'Max';
 userName;
@@ -161,3 +163,32 @@ console.log(moreNumbersFrom);
 
 JSON.stringify();
 JSON.parse();
+
+ */
+
+/* 
+function foo (item) {
+  console.log(item, this.a)
+}
+var obj = {
+  a: 'obj'
+}
+var a = 'window'
+var arr = [1, 2, 3]
+
+arr.forEach(foo, obj)
+arr.map(foo, obj)
+arr.filter(function (i) {
+  console.log(i, this.a)
+  return i > 2
+}, obj)
+ */
+function Person (name) {
+  this.name = name
+}
+Person.prototype.eat = function () {
+  console.log('Eatting')
+}
+var lindaidai = new Person('LinDaiDai')
+console.log(lindaidai)
+lindaidai.eat()

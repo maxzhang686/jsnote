@@ -1940,7 +1940,7 @@ console.log(newInfo.title);//New
 ```
 
 #
-### Checking for Property existence 
+### 8.10. Checking for Property existence 
 ```js
 const movie = {
   info: {
@@ -1951,14 +1951,60 @@ if ('info' in movie){ };
 ```
 
 #
-### this
-**Very important part!!!**
+### 8.11. this
+**Very important part!!!**  
+关于this的详解，网上有很多解释得特别好的文章。毕竟面试必问。推荐直接看下列文章。这章的笔记请无视。  
+[45 Question about this](https://juejin.im/post/5e6358256fb9a07cd80f2e70)  
+[This关键字](https://github.com/koala-coding/goodBlog/blob/master/docs/javascript/this.md)  
+[what is context?](http://ryanmorr.com/understanding-scope-and-context-in-javascript/)   
+[You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/this%20%26%20object%20prototypes/ch2.md), [CN](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/this%20%26%20object%20prototypes/ch2.md)  
 
-what is this? 
 
-bind()
+**5 rules with this binding - call site**
+- Default Binding
+- Implicit Binding
+- Explicit Binding
+- New Binding
+- arrow function binding
 
-call() & apply()
+
+
+```js
+const dragon = {
+  weapon: 'fire',
+  attack: function() {
+  console.log(`attacking with ${this.weapon}`);
+  }
+}
+dragon.attack();//第一:attacking with fire
+const abc = dragon.attack;
+abc();//第二:attacking with undefined
+const abc2 = 'defined?: ' + dragon.attack();//第三:attacking with fire
+console.log(abc2);//defined?: undefined
+```
+第一种情况，this指的是object(dragon), 所以输出的值是attacking with fire.  
+第二种情况，会返回undefined(window?)，因为只是赋予了变量 **abc** 一个function，当执行abc的时候，this前面没有object,返回undefined。
+
+第三种情况（谁会这么写？？？为了防止不懂，解释一下。。。），当 **abc2** 定义的时候，**`dragon.attack()`**后面加括号，等于立马执行了这个函数，所以会出现attacking with fire的结果，但是当再次读取abc2时候，会是undefined。
+- return
+
+![find](noteimgs/section8b.png)
+
+
+
+
+
+# 
+### 8.12. bind()
+Bind is useful whenever you want to pre-configure a function for the **`future execution`**
+
+#
+### 8.13. call() & apply()
+executing the function **`right away`**
+```js
+function.call(this, argArray,argArray...);
+function.apply(this, [Array]);
+```
 
 ***
 ## 9. Classes & Object-oriented Programming (OOP)
@@ -2027,7 +2073,7 @@ call() & apply()
 ### 36.2. IDE
 color,theme, Icon, extensions,
 
-**Shortcuts**
+**Shortcuts**  
 Toggle block comment: `option + shift + a` ;  
 Toggle line comment: `cmd + /`;  
 Add Selection To Next Find Match: `cmd+d`;  
@@ -2039,7 +2085,7 @@ delete whole line: `shift + cmd + K`
 
 **auto-completion**
 
-open the suggestion: `control + space`;
+open the suggestion: `control + space`;   
 hints: `shift + cmd + space`;
 
 #
