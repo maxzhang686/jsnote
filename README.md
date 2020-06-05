@@ -65,6 +65,11 @@ result.toString()
 isNan(inputNumber)
 ```
 
+```JS
+JSON.stringify();
+JSON.parse();
+```
+
 
 ### 1.3. Build-in function
 
@@ -486,8 +491,8 @@ Falsy and Truthy value (**Print out**)
 
 #
 ### 3.5. Ternary Operator
+三元  
 ![find](noteimgs/section3k.png)
-
 
 Example:
 
@@ -1910,7 +1915,16 @@ const filterMovie = !filterText
 
 #
 ### 8.6. chaining 
+xx.xx.xx
+```js
+const movie = {
+  info: {
+    title: newTitle
+  }
+};
 
+console.log(movie.info.title);
+```
 #
 ### 8.7. Object Spread Operator
 **(...)**  
@@ -1960,6 +1974,51 @@ if ('info' in movie){ };
 [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/this%20%26%20object%20prototypes/ch2.md), [CN](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/this%20%26%20object%20prototypes/ch2.md)  
 
 
+
+**避免使用的场景**  
+根据箭头函数的特性，所以我们应该避免在以下四种场景中使用它：
+
+1. 使用箭头函数定义对象的方法
+```js
+  let obj = {
+      value: 'LinDaiDai',
+      getValue: () => console.log(this.value)
+  }
+  obj.getValue() // undefined
+```
+
+2. 定义原型方法
+```js
+function Foo (value) {
+    this.value = value
+}
+Foo.prototype.getValue = () => console.log(this.value)
+
+const foo1 = new Foo(1)
+foo1.getValue() // undefined
+```
+
+3. 构造函数使用箭头函数
+
+```js
+const Foo = (value) => {
+    this.value = value;
+}
+const foo1 = new Foo(1)
+// 事实上直接就报错了 Uncaught TypeError: Foo is not a constructor
+console.log(foo1);
+```
+
+4. 作为事件的回调函数
+```js
+const button = document.getElementById('myButton');
+button.addEventListener('click', () => {
+    console.log(this === window); // => true
+    this.innerHTML = 'Clicked button';
+});
+```
+
+
 **5 rules with this binding - call site**
 - Default Binding
 - Implicit Binding
@@ -2006,11 +2065,94 @@ function.call(this, argArray,argArray...);
 function.apply(this, [Array]);
 ```
 
+#
+### 8.14. getter and setter
+
+```js
+const newTitle = 'Default';
+
+const movie = {
+  info: {
+    set title(value) {
+      if (value.trim() === "") {
+        this._title = "undefined";
+        return;
+      }
+      this._title = value;
+    },
+    get title() {
+      return this._title;
+    }
+  },
+  id: Math.random()
+};
+
+
+movie.info.title = 'Java';
+console.log(movie.info.title);//Java
+
+
+```
+
 ***
 ## 9. Classes & Object-oriented Programming (OOP)
+
+- what is OOP
+- class & instances
+- properties, fields & methods
+- inheritance
+
+#
+### 9.1. OOP
+
+#
+### 9.2. class
+
+```js
+class Product {
+  // title;
+  constructor(title) {
+    this.title = title;
+  render(){
+    return
+  }
+}
+```
+
+#
+### 9.3. Field vs Properties
+
+![find](noteimgs/section9a.png)
+
+#
+### 9.4. class with 'this'
+
+#
+### 9.5. Static Methods & Properties
+static/instance 
+![find](noteimgs/section9b.png)
+
+#
+### 9.6. classes vs object
+![find](noteimgs/section9c.png)
+
+#
+### 9.7. getter and setter
+
+#
+### inheritance
+![find](noteimgs/section9d.png)
+
+
+
              
 ***
 ## 10. Constructor Functions & Prototypes
+
+
+原型链
+
+
 ***
 ## 11. Practice: OOP & Classes
 ***
@@ -2108,3 +2250,16 @@ https://medium.com/@jbbpatel94/difference-between-offsetheight-clientheight-and-
 
 * `this`
 * `let` & `const` (let for changing value)
+
+
+#project
+
+- **project 1**  
+about basics js. 
+- **project 2**    
+if, &&, loop, switch(break & continue), try-catch
+- **project 3**  
+DOM(add, delete...)
+- **project 4**  
+object  
+- **project 5**  

@@ -36,7 +36,7 @@ greet();
 console.log(name, hobbies);
  */
 
-'use strict';
+
 /* 
 console.log(name);
 var name = "Max";
@@ -183,12 +183,4 @@ arr.filter(function (i) {
   return i > 2
 }, obj)
  */
-function Person (name) {
-  this.name = name
-}
-Person.prototype.eat = function () {
-  console.log('Eatting')
-}
-var lindaidai = new Person('LinDaiDai')
-console.log(lindaidai)
-lindaidai.eat()
+
