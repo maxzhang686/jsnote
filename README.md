@@ -1567,14 +1567,16 @@ const inventory = [
 ];
 const result = inventory.find( (item,index, items) => { 
   return item.name === 'cherries'} );
+
 const resultIndex = inventory.findIndex( (item,index, items) => { 
   return item.name === 'cherries'} );
-console.log(result, resultIndex); // { name: 'cherries', quantity: 5 } 1
+console.log(result, resultIndex); 
+// { name: 'cherries', quantity: 5 } , 1
 ```
 
 #
 ### 7.6. includes()
-
+查找
 If cant find, return '-1'.
 ```js
 console.log(arrayName.includes(itemValue));//return true/false
@@ -1892,6 +1894,7 @@ console.log(person['field 12']);
 ```js
 const newObject = {
   propertyName: propertyName,
+  //same as 
   propertyName1  
 }
 ```
@@ -2123,6 +2126,7 @@ class Product {
 ### 9.3. Field vs Properties
 
 ![find](noteimgs/section9a.png)
+Fields are in the end simply translated to properties you would otherwise set up in the constructor method.
 
 #
 ### 9.4. class with 'this'
@@ -2140,15 +2144,56 @@ static/instance
 ### 9.7. getter and setter
 
 #
-### inheritance
+### 9.8. inheritance
 ![find](noteimgs/section9d.png)
 
+constructor(); 创建实例的时候的数据传值
+super(); 从父级拿数据
+
+**overriding methods**
+
+![find](noteimgs/section9e.png)  
+Add the **'product'** to the **DOM**, but you render the 'DOM' after you add(create) 'product'.  
+(254, 4:12)
 
 
+**super() constructor**
              
+
+#
+### 9.9. Private Properties
+A property should be used internally only. 
+
+
+#
+### 9.10. instanceof
+
+#
+### 9.11. Object Descriptors
+
+```js
+Object.getOwnPropertyDescriptors(ObjectName);
+
+
+Object.defineProperty(person, 'name', {
+  configurable: true,
+  enumerable: true,
+  value: "Max",
+  writable: false,
+})
+//this is a way to change/locking down the property
+
+```
+
+#
+### Question
+the class itself is not the object. objects based on classes. 
+
+
+
+
 ***
 ## 10. Constructor Functions & Prototypes
-
 
 原型链
 

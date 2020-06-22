@@ -164,7 +164,7 @@ const person = {
 
 console.log(person);//1 will be the first one.
  */
-
+/* 
 const movie = {
   info: {
     title: "New",
@@ -174,3 +174,10 @@ const movie = {
 const { info: newTitle, ...others } = movie;
 console.log(newTitle.title);
 console.log(others);
+ */
+
+let a =  3;
+if (a === 3) {
+  a = 2;
+}
+console.log(a);

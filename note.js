@@ -184,3 +184,8 @@ arr.filter(function (i) {
 }, obj)
  */
 
+var a =  3;
+if (a === 3) {
+ var a = 2;
+}
+console.log(a);
