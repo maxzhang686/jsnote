@@ -46,18 +46,22 @@
 
 **change the string to number.**
 ```js
-parseInt(10);
+parseInt(10, 2); //2
 parseFloat(10.1);
 ```
 **also work as*
 ```js
 result + +userInput.value = result + parseInt(userInput.value)
 ```
+
 if the number's length is more than 16, it wouldn't work. try use BigInt().
+
 
 **change the number to string.**
 ```js
 result.toString()
+const num =10;
+console.log(num.toString(2));//1010
 ```
 
 **check is it a number.**
@@ -520,8 +524,8 @@ const logEvent = mode === MODE_ATTACK ? LOG_EVENT_PLAYER_ATTACK : LOG_EVENT_PLAY
 
 
 ||:  
-if the `first value` is true, return the `second value`.  
-if the `first value` is false, return the `first value`.
+if the `first value` is true, return the `first value`.  
+if the `first value` is false, return the `second value`.
 ```js
 const usrInput = '';
 const userName = usrInput || 'Max';
@@ -2186,16 +2190,36 @@ Object.defineProperty(person, 'name', {
 ```
 
 #
-### Question
+### 9.12. Question
 the class itself is not the object. objects based on classes. 
 
+[MDN - Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 
 
 
 ***
 ## 10. Constructor Functions & Prototypes
 
+![find](noteimgs/section10a.png)
 原型链
+
+
+#
+### 10.1. class and constructor functions 
+Syntactical sugar
+
+#
+### 10.2. Prototype
+super important! 
+![find](noteimgs/section10b.png)
+![find](noteimgs/section10c.png)
+![find](noteimgs/section10d.png)
+
+
+![find](noteimgs/section10e.png)
+
+
+
 
 
 ***

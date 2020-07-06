@@ -184,8 +184,11 @@ arr.filter(function (i) {
 }, obj)
  */
 
-var a =  3;
-if (a === 3) {
- var a = 2;
-}
-console.log(a);
+let j = 3;
+do {
+  console.log(j);
+  j++;
+} while (j < 3) 
+
+console.log(j)
+//output: 3
