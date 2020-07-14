@@ -2120,6 +2120,7 @@ class Product {
   // title;
   constructor(title) {
     this.title = title;
+  }
   render(){
     return
   }
