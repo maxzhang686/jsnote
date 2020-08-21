@@ -17,7 +17,7 @@
 - [15. More about Numbers & Strings](#15-more-about-numbers--strings)
 - [16. Asynchronous/Async JS: Promises & Callbacks](#16-asynchronousasync-js-promises--callbacks)
 - [17. Background Http (Ajax)](#17-background-http-ajax)
-- [18. rd Party Libraries](#18-rd-party-libraries)
+- [18. 3rd Party Libraries](#18-rd-party-libraries)
 - [19. JavaScript Modules](#19-javascript-modules)
 - [20. Tooling (Webpack, Babel, …)](#20-tooling-webpack-babel-)
 - [21. Working with Browser Storage](#21-working-with-browser-storage)
@@ -46,12 +46,14 @@
 
 **change the string to number.**
 ```js
-parseInt(10, 2); //2
+parseInt("10", 2); //change to a number, then to radix 2
 parseFloat(10.1);
 ```
-**also work as*
+
 ```js
-result + +userInput.value = result + parseInt(userInput.value)
+let newResult = result + +userInput.value;
+// **also work as*
+let newResult = result + parseInt(userInput.value)
 ```
 
 if the number's length is more than 16, it wouldn't work. try use BigInt().
@@ -72,6 +74,15 @@ isNan(inputNumber)
 ```JS
 JSON.stringify();
 JSON.parse();
+```
+
+```js
+  var str = "Hello World!";
+  var enc = window.btoa(str);
+  var dec = window.atob(enc)
+  // Encoded String: SGVsbG8gV29ybGQh
+  // Decoded String: Hello World!
+
 ```
 
 
@@ -2240,7 +2251,7 @@ super important!
 ***
 ## 17. Background Http (Ajax)
 ***
-## 18. rd Party Libraries
+## 18. 3rd Party Libraries
 ***
 ## 19. JavaScript Modules
 ***

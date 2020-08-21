@@ -176,8 +176,17 @@ console.log(newTitle.title);
 console.log(others);
  */
 
-let a =  3;
-if (a === 3) {
-  a = 2;
+// let a =  3;
+// if (a === 3) {
+//   a = 2;
+// }
+// console.log(a);
+
+
+{
+  let n=10;
+  if(true){
+      let n=5;
+  }
+  console.log('内层还是外层的n呢？',n);
 }
-console.log(a);

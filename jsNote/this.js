@@ -50,6 +50,8 @@
 //   }
 //   }
 
+
+/* 
 //1
 var length = 10;
 function fn() {
@@ -67,3 +69,33 @@ var obj = {
 obj.method(fn, 1);
 
 //2
+ */
+
+
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+const items = ['l','i'];
+
+
+//   result = result.filter(word => word.includes(key));
+
+// for (const key of items) {
+//   const result = words.filter(word => word.includes(key));
+//   result1.push(result)
+// }
+let result = words; 
+for (const key of items) {
+  result = result.filter(word => word.includes(key));
+}
+console.log(result);
+
+
+let result1 = []
+for (const key of items) {
+  words.map((word) => { if (word.includes(key)) {
+    result1.push(word)  
+  }})
+}
+console.log(result1);
+
+
+
