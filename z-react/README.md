@@ -10,10 +10,12 @@
 2. decide the state and where it lives
 3. What changes when state changes
 
-### Promises
+
 
 ### lifecycle 
 
 ### class component and functional component.
 
 ng-container (react)
+
+### Promises

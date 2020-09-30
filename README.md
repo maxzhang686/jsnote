@@ -43,7 +43,7 @@
 ### 1.1. Dynamic vs Weakly Typed Languages
 #
 ### 1.2. Converting Data Types
-
+(类型转换)  
 **change the string to number.**
 ```js
 parseInt("10", 2); //change to a number, then to radix 2
@@ -609,7 +609,7 @@ const userName = enteredValue || 'PLACEHOLDER'; // will assign 'PLACEHOLDER' if 
 
 #
 ### 3.9. Switch with "break"
-Switch with greater than ect. [Link](https://stackoverflow.com/questions/32576618/switch-statement-to-compare-values-greater-or-less-than-a-number/32576647)
+Switch with 'greater than' ect. [Link](https://stackoverflow.com/questions/32576618/switch-statement-to-compare-values-greater-or-less-than-a-number/32576647)
 
 example:
 ```js
@@ -1097,6 +1097,8 @@ More on Functions : [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScrip
 ### 5.10. call() & apply()
 *Will dive deeper.*
 
+
+***
 ## 6. DOM Basics
 
 - HTML, DOM & JavaScript
@@ -1525,6 +1527,7 @@ console.log(moreNumbersFrom);
 
 #
 ### 7.2. adding & removing 
+增加/删除 （改变原数组）
 push(), unshift(), pop(), shift()
 
 ```js
@@ -1541,22 +1544,22 @@ numbers[6] = 6;//[2, 3, 2, empty × 3, 6]
 ```
 
 [Array.prototype.splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
+
+
+#
+### 7.3. Selecting Ranges & Creating Copies
+slice(), 会改变原数组
 ```js
 arrayName.splice(startIndexNumber, deleteCount, addItem1, addItem2, ...); 
 ```  
 
-#
-### 7.3. Selecting Ranges & Creating Copies
-slice(), concat()
-
-
 ```js
-const newArray = arrayName.slice(); //return a new array(copy).
 const newArray = arrayName.slice(arrayIndexStart, arrayIndexEnd); 
 //return a new array.
 ```
 
-Return (copy) **`a new array`** after add items at the end.
+concat()  
+Return (copy) **`a new array`** after add items at the end. 不改变原数组
 ```js
 const newArray = arrayName.concat([newItem1, newItem2, ...]);
 ```
@@ -1596,42 +1599,8 @@ If cant find, return '-1'.
 ```js
 console.log(arrayName.includes(itemValue));//return true/false
 ```
-
-
 #
-### 7.7. forEach() 
-```js
-const arrayName = [1, 2, 3, 4, 5, 6];
-const tax = 0.1;
-const newArray = [];
-
-arrayName.forEach((element, idx, elements)=>{
-  const newElement = {index: idx,  number: element + tax};
-  newArray.push(newElement);
-})
-console.log(newArray);
-//[{index: 0, number: 1.1}, {index: 1, number: 2.1}, {…}, {…}, {…}, {…}]
-```
-#
-### 7.8. map()
-循环
-```js
-const arrayName = [1, 2, 3, 4, 5, 6];
-const tax = 0.1;
-
-const newArray = arrayName.map((element, idx, elements)=>{
-  const newElement = {index: idx,  number: element + tax};
-  return newElement;
-});
-
-console.log(newArray);
-//[{index: 0, number: 1.1}, {index: 1, number: 2.1}, {…}, {…}, {…}, {…}]
-```
-
-
-
-#
-### 7.9. sort() and reverse()
+### 7.7. sort() and reverse()
 排序
 ```js
 const arrayName = [71, 22, 103, 54, 65, 86];
@@ -1650,9 +1619,40 @@ const newArray = arrayName.sort((a, b)=> {
 console.log(newArray);
 //[22, 54, 65, 71, 86, 103]
 ```
+
+#
+### 7.8. forEach() 
+```js
+const arrayName = [1, 2, 3, 4, 5, 6];
+const tax = 0.1;
+const newArray = [];
+
+arrayName.forEach((element, idx, elements)=>{
+  const newElement = {index: idx,  number: element + tax};
+  newArray.push(newElement);
+})
+console.log(newArray);
+//[{index: 0, number: 1.1}, {index: 1, number: 2.1}, {…}, {…}, {…}, {…}]
+```
+#
+### 7.9. map()
+循环，返回新数组，不改变原数组
+```js
+const arrayName = [1, 2, 3, 4, 5, 6];
+const tax = 0.1;
+
+const newArray = arrayName.map((element, idx, elements)=>{
+  const newElement = {index: idx,  number: element + tax};
+  return newElement;
+});
+
+console.log(newArray);
+//[{index: 0, number: 1.1}, {index: 1, number: 2.1}, {…}, {…}, {…}, {…}]
+```
+
 #
 ### 7.10. Filtering Arrays with filter()
-筛选
+筛选,返回新数组，不改变原数组
 ```js
 const arrayName = [71, 22, 103, 54, 65, 86];
 
@@ -1726,14 +1726,6 @@ console.log(Math.min(...numbers));//1
 包括上面的所有复制，object的refer都是相同的。（详情看堆内存详解）  
 改变原有array的object值，复制的array也会随之改变。（引申：浅拷贝，深拷贝）
 ```js
-const numbers = [1, 2, 3]; 
-const newNumber = [...numbers];
-
-numbers.push(4);
-console.log(numbers, newNumber);
-//[1, 2, 3, 4]    //[1, 2, 3]
-console.log(Math.min(...numbers));//1
-
 const name = [{age : 1},{age : 2}];
 const newName = [...name];
 

@@ -1,278 +1,259 @@
-
-## 2. Language Basics, Base Syntax
 #
-### 2.1. Variables & Constants
-![find](noteimgs/section1a.jpg)
-
-variable: A data container where the data can be changed during program execution.
-
-#
-### 2.2. Declaring & Defining
-![find](noteimgs/section1b.png)
-
-**set up as a global value:**  
-it's also quite common to use all uppercase characters there and separate words with an underscore, to make it really clear that this is a global value which you just 'hard coded' into the code.
-```js
-const ATTACK_VALUE = 10;
-```
-
-#
-### 2.3. Operators
-![find](noteimgs/section1c.png)
+### 7.2. adding & removing 
+增加/删除 （改变原数组）
+push(), unshift(), pop(), shift()
 
 ```js
-number = number + newNumber; //same as:
-number += newNumber
+const numbers = [2, 2, 2]; 
 
-number = number + 1; //same as:
-number++;
-```
-#
-### 2.4. Some data types 
-![find](noteimgs/section1d.png)
+numbers.push(6);//[2, 2, 2, 6]
+numbers.unshift(1);//[1, 2, 2, 2, 6]//at the beginning
 
-**String**  
-Javascript template literal `(``)`. [links](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
-```js
-let currentResult = "(" + defaultResult + "+ 10) * 3 / 2 -1";
-let currentResult = `(${defaultResult} + 10) * 3 / 2 -1`;
+numbers.pop();//return [1, 2, 2, 2] delete last one 
+numbers.shift();//return [2, 2, 2] delete first one
+
+numbers[1] = 3;//[2, 3, 2]
+numbers[6] = 6;//[2, 3, 2, empty × 3, 6]
 ```
 
-string Escape notation. [Link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#Escape_notation)  
-
-* css: `white-space: pre`.
+[Array.prototype.splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
 
 
 #
-### 2.5. Function
-![find](noteimgs/section1e.png)
-
-A function defines code which doesn't execute right away but which can be executed multiple times by calling the function.  
-
-A function is "code on demand".  
-
-Function parameters are Data that can be provided to the function (input) - available only inside of the function, like local variables.
-
-**Most importantly**: A function is not "an alternative to a variable". It supports a totally different use-case. But it's also worth pointing out that variables are NOT restricted to storing numbers or strings.
-
-**defines**
+### 7.3. Selecting Ranges & Creating Copies
+slice(), 会改变原数组
 ```js
-function functionName(parameter1, parameter2){
-  const result = parameter1 + parameter2;
-  alert(`The result is ${result}`)
-}
-```
-**call function**
+arrayName.splice(startIndexNumber, deleteCount, addItem1, addItem2, ...); 
+```  
+
 ```js
-functionName()
+const newArray = arrayName.slice(arrayIndexStart, arrayIndexEnd); 
+//return a new array.
 ```
 
-* Build-in function
-alert(), addEventListener(), prompt()
-
-  
-
+concat()  
+Return (copy) **`a new array`** after add items at the end. 不改变原数组
+```js
+const newArray = arrayName.concat([newItem1, newItem2, ...]);
+```
 
 #
-### 2.6. "Indirect" vs "Direct" Function Execution
-
-<!-- scope and closures!!!(other section explain more) -->
-
-It can be confusing to see that there seem to be two ways of executing a function:
+### 7.4. Retrieving Indexes with indexOf() & lastIndexOf()
+return the index number. *not work for object. 
 ```js
-function add() {
-  something = someNum + someOtherNum;
-}
+arrayName.indexOf(itemValue); //from first one, return index-number
+arrayName.lastIndexOf(itemValue); //from last one 
 ```
-<span style="color: red">`add()`</span> vs <span style="color: red">`add`</span>
-
-It's important to understand why we have these "two ways"!
-
-**In general**, you call a function that you defined by **using its name** (e.g. `add`) and **adding parentheses** (with any parameters the function might need - or empty parentheses if no parameters are required like in the above example).
-
-=> <span style="color: red">`add()`</span>
-
-This is how you execute a function from your code. Whenever JavaScript encounters this statement, it goes ahead and runs the code in the function. Period!
-
-**Sometimes however**, you **don't want to execute the function immediately**. You rather want to "tell JavaScript" that it should execute a certain function **at some point in the future** (e.g. when some event occurs).
-
-That's when you don't directly call the function but when you instead just provide JavaScript with the name of the function.
-
-=> <span style="color: red">`someButton.addEventListener('click', add);`</span>
-
-This snippet would tell JavaScript: "Hey, when the button is clicked, go ahead and execute add.".
-
-<span style="color: red">`someButton.addEventListener('click', add());`</span> would be wrong.
-
-Why? Because JavaScript would encounter that line when it parses/ executes your script and register the event listener AND immediately execute add - because you added parentheses => That means (see above): "Please execute that function!".
-
-Just writing add somewhere in your code would do nothing by the way:
-```js
-let someVar = 5;
-add
-alert('Do something else...');
-```
-Why?
-
-Because you just throw the name of the function in there but **you don't give any other information to JavaScript**. It basically doesn't know what to do with that name ("Should I run that when a click occurs? After a certain amount of time? I don't know...") and hence JavaScript kind of ignores this statement.
 
 
 
 #
-### 2.7. return
+### 7.5. find() and findIndex()
+finding stuff in object.  
+`find()` dose not create a copy. 
 ```js
-function functionName(parameter1, parameter2){
-  const result = parameter1 + parameter2;
-  return result;
-}
-```
-Any code that have write after <span style="color: red">`return`</span>, won't execute.  
+const inventory = [
+  {name: 'apples', quantity: 2},
+  {name: 'cherries', quantity: 5}
+];
+const result = inventory.find( (item,index, items) => { 
+  return item.name === 'cherries'} );
 
-
-#
-### 2.8. scope and closures
-
-You can't use local/block-scope variables(= declared inside of functions) outside of them.
-
-**shadowing**
-
-What happens if you have this code?
-```js
-let userName = 'Max';
-function greetUser(name) {
-  let userName = name;
-  alert(userName);
-}
-userName = 'Menu';
-greetUser('Max');
-```
-This will actually show an alert that says <span style="color: red">`'Max'`</span> (NOT <span style="color: red">`'Menu'`</span>).
-
-You might've expected that an error gets thrown because we use and declare <span style="color: red">`userName`</span> more than once - and as you learned, that is not allowed.
-
-It indeed is **not allowed on the same level/ in the same scope**.
-
-So this would fail:
-```js
-let userName = 'Max';
-let userName = 'Menu';
-```
-Why does it work in the first code snippet though?
-
-Because we first create a global variable <span style="color: red">`userName`</span> via
-```js
-let userName = 'Max';
-```
-But then we never re-declare that on the global level (that would not be allowed).
-
-We only declare another variable inside of the function. But since variables in functions get their **own scope**, JavaScript does something which is called **"shadowing"**.
-
-It **creates a new variable on a different scope** - this variables does not overwrite or remove the global variable by the way - **both co-exist**.
-
-When referring to <span style="color: red">`userName`</span> inside of the <span style="color: red">`greetUser`</span> function we now **always refer to the local, shadowed variable**. Only **if no such local variable existed, JavaScript would fall back to the global variable**.
-
-#
-### 2.9. Converting Data Types
-**change the string to number.**
-```js
-parseInt(10);
-parseFloat(10.1);
-```
-**also work as**
-
-```js
-result + +userInput.value = result + parseInt(userInput.value)
-```
-
-if the number's length is more than 16, it wouldn't work. try use BigInt().
-
-**change the number to string.**
-```js
-result.toString()
-```
-
-**check is it a number.**
-```js
-isNan(inputNumber)
-```
-
-
-**font setting**
-
-```js
-xxx.toUpperCase();
-```
-
-**Mix number and string**  
-You saw the example with a number and a "text number" being added
-
-<span style="color: red">`3 + '3'`</span>=> <span style="color: red">`'33'`</span>
-
-in JavaScript.
-
-That happens because the + operator also supports strings (for string concatenation).
-
-It's the only arithmetic operator that supports strings though. For example, this will not work:
-
-<span style="color: red">`'hi' - 'i'`</span>=> <span style="color: red">`NaN`</span>
-
-<span style="color: red">`NaN`</span> is covered a little later, the core takeaway is that you can't generate a string of 'h' with the above code. Only <span style="color: red">`+`</span> supports both strings and numbers.
-
-Thankfully, JavaScript is pretty smart and therefore is actually able to handle this code:
-
-<span style="color: red">`3 * '3'`</span> => <span style="color: red">`9`</span>
-
-Please note: It yields the number (!) <span style="color: red">`9`</span>, NOT a string <span style="color: red">`'9'`</span>!
-
-Similarly, these operations also all work:
-
-<span style="color: red">`3 - '3'`</span> => <span style="color: red">`0`</span>
-
-<span style="color: red">`3 / '3'`</span> => <span style="color: red">`1`</span>
-
-Just <span style="color: red">`3 + '3'` </span>yields <span style="color: red">`'33'`</span> because here JavaScript uses the "I can combine text" mode of the <span style="color: red">`+`</span> operator and generates a string instead of a number.
-
-
-#
-### 2.10. arrays
-Section 8 will explain more. [Link](#8-arrays--iterables)  
-Array: A list of data of any kind.
-```js
-newArray = [1, 2, 3]；
-newArray.push("4")；
-console.log(newArray[0]);
+const resultIndex = inventory.findIndex( (item,index, items) => { 
+  return item.name === 'cherries'} );
+console.log(result, resultIndex); 
+// { name: 'cherries', quantity: 5 } , 1
 ```
 
 #
-### 2.11. object 
-Section 9 will explain more. [Link](#9-objects)  
-object: grouped data, structured in key-value pairs.
-
+### 7.6. includes()
+查找
+If cant find, return '-1'.
 ```js
-newObject = {
-  name: 'max';
-  age: 27;
-}；
-console.log(newObject.name);
+console.log(arrayName.includes(itemValue));//return true/false
 ```
 #
-### 2.12. undefined, null & NaN
-![find](noteimgs/section1f.png)
+### 7.7. sort() and reverse()
+排序
+```js
+const arrayName = [71, 22, 103, 54, 65, 86];
+const tax = 0.1;
 
-<span style="color: red">`undefined`</span> & <span style="color: red">`null`</span> - whilst the two values are similar, they're not equal. undefined is a special type and the default value for undefined variables, null is actually of type object and never a default value of anything.
+const newArray = arrayName.sort((a, b)=> {
+  if (a > b){
+    return 1;
+  } else if (a === b){
+    return 0;
+  } else {
+    return -1;
+  }
+});
+
+console.log(newArray);
+//[22, 54, 65, 71, 86, 103]
+```
 
 #
-### 2.13. type of
+### 7.8. forEach() 
+```js
+const arrayName = [1, 2, 3, 4, 5, 6];
+const tax = 0.1;
+const newArray = [];
 
-`typeof [1, 2, 3]` is an **Object**  
-`typeof undefined` is **undefined**  
-`typeof null` is **Object**  
-`typeof NaN` is **number**
+arrayName.forEach((element, idx, elements)=>{
+  const newElement = {index: idx,  number: element + tax};
+  newArray.push(newElement);
+})
+console.log(newArray);
+//[{index: 0, number: 1.1}, {index: 1, number: 2.1}, {…}, {…}, {…}, {…}]
+```
+#
+### 7.9. map()
+循环，返回新数组，不改变原数组
+```js
+const arrayName = [1, 2, 3, 4, 5, 6];
+const tax = 0.1;
+
+const newArray = arrayName.map((element, idx, elements)=>{
+  const newElement = {index: idx,  number: element + tax};
+  return newElement;
+});
+
+console.log(newArray);
+//[{index: 0, number: 1.1}, {index: 1, number: 2.1}, {…}, {…}, {…}, {…}]
+```
 
 #
-### 2.14. import JS file with "defer" & "async"
-only for external file
+### 7.10. Filtering Arrays with filter()
+筛选,返回新数组，不改变原数组
+```js
+const arrayName = [71, 22, 103, 54, 65, 86];
 
-![find](noteimgs/section1g.png)
-![find](noteimgs/section1h.png)
-![find](noteimgs/section1i.png)
+const filterArray = arrayName.filter((element, index, elements) => {
+  return element > 50;
+})
+console.log(`copy:`,filterArray);//[71, 103, 54, 65, 86]
+```
+
+#
+### 7.11. reduce()
+处理
+```js
+const arrayName = [1.1, 2.2, 3, 4, 5, 6];
+
+const sum = arrayName.reduce((prevValue, curValue, index , Elements) => {
+  return prevValue + curValue;
+}, 0);
+console.log(sum);//21.3x
+```
+
+#
+With all these useful array methods you learned about, it's important to understand how you can combine them. Let's take **`map()`** and **`reduce()`** as an example:
+```js
+const originalArray = [{price: 10.99}, {price: 5.99}, {price: 29.99}];
+const transformedArray = originalArray.map(obj => obj.price); // produces [10.99, 5.99, 29.99]
+const sum = transformedArray.reduce((sumVal, curVal) => sumVal + curVal, 0); // => 46.97
+```
+Of course, you could skip the map step and just add the extraction logic to **`reduce()`**:
+```js
+const originalArray = [{price: 10.99}, {price: 5.99}, {price: 29.99}];
+const sum = originalArray.reduce((sumVal, curVal) => sumVal + curVal.price, 0); // => 46.97
+```
+But let's say you have a more complex extraction logic and hence want to split this into multiple method calls. Or you have a re-usable map function which you want to be able to use in different places of your app. Then you can still write the initial example in a more concise way if you **leverage method chaining**:
+```js
+const originalArray = [{price: 10.99}, {price: 5.99}, {price: 29.99}];
+const sum = originalArray.map(obj => obj.price)
+    .reduce((sumVal, curVal) => sumVal + curVal, 0); // => 46.97
+```   
+We call **`.reduce()`** directly on the result of **`map()`** (which produces an array, that's why this is possible). Hence we can avoid storing the mapped array in a separate constant or variable that we might not need in any other place.
+
+#
+### 7.12. split() and join()
+string to array
+
+```js
+const data = "Sydney;Canberra;Melbourne";
+const array = data.split(";");
+console.log(array);//["Sydney", "Canberra", "Melbourne"]
+
+const nameFragments = ['Max','Zhang'];
+const name = nameFragments.join(' ');
+console.log(name);//Max Zhang
+```
+
+#
+### 7.13. Spread Operator (...)
+
+spread for copy or 
+```js
+const numbers = [1, 2, 3]; 
+const newNumber = [...numbers];
+
+numbers.push(4);
+console.log(numbers, newNumber);
+//[1, 2, 3, 4]    //[1, 2, 3]
+console.log(Math.min(...numbers));//1
+```
+
+**Copy:**  
+包括上面的所有复制，object的refer都是相同的。（详情看堆内存详解）  
+改变原有array的object值，复制的array也会随之改变。（引申：浅拷贝，深拷贝）
+```js
+const name = [{age : 1},{age : 2}];
+const newName = [...name];
+
+name.push({age : 3});
+console.log(name, newName);
+//[{age: 1}, {age: 2}, {age: 3}]
+//[{age: 1}, {age: 2}]
+
+name[0].age = 4;
+console.log(name, newName);
+//[{age: 4}, {age: 2}, {age: 3}]
+//[{age: 4}, {age: 2}]
+```
+
+
+#
+### 7.14. Array Destructuring
+
+```js
+const nameFragments = ['Max','Zhang', 'male', 28];
+const [firstName, LastName, ...others] = nameFragments;
+console.log(firstName,LastName, others);
+//Max Zhang ["male", 28]
+```
+
+#
+### 7.15. maps and sets 
+3 major iterable data structures.(Array, Set, Map)
+
+![find](noteimgs/section7b.png)
+???????????????????????????????????
+
+**Map & object**
+![find](noteimgs/section7c.png)
+
+#
+### 7.16. WeakSet & WeakMap
+
+
+#
+### 7.17. Question 小问题
+*两个array变成一个object：{array1 : array2}
+
+*array 前面的property名字变换：
+```js
+const array = [1, 2, 3, 4, 5, 6];
+const arrayMonth = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
+
+const mapArray = arrayMonth.map( (val)=> { 
+  return { [array[idx] + `月`]: val};
+});
+console.log(mapArray);
+// 0: {1月: "Jan"}
+// 1: {2月: "Feb"}
+// 2: {3月: "Mar"}
+// 3: {4月: "Apr"}
+// 4: {5月: "May"}
+```

@@ -2,10 +2,12 @@ npm install -g @angular/cli
 ng new my-dream-app
 cd my-dream-app
 ng serve
-
+npm install -g @angular/cli@10.0.2
 
 * configure to https
 
+
+*
 
  3135* ng g m orders
  3136* cd orders
