@@ -1,4 +1,3 @@
-
 /* const numbers = [2, 2, 2]; 
 numbers.push(6);//[2, 2, 2, 6]
 console.log(numbers);
@@ -183,11 +182,22 @@ console.log(others);
 // }
 // console.log(a);
 
+// {
+//   let n=10;
+//   if(true){
+//       let n=5;
+//   }
+//   console.log('内层还是外层的n呢？',n);
+// }
 
-{
-  let n=10;
-  if(true){
-      let n=5;
-  }
-  console.log('内层还是外层的n呢？',n);
-}
+let number = [1, 2, 3, 4, 5];
+
+let copy = number;
+
+let deepCopy = number.slice(0);
+
+console.log(number, copy, deepCopy);
+
+number[0] = 99;
+
+console.log(number, copy, deepCopy);

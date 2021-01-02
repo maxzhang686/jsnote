@@ -72,7 +72,7 @@ const mapChildrenProducts = function(arr){
   })
   return components;
 }
-console.log(mapChildrenProducts(childProducts));
+// console.log(mapChildrenProducts(childProducts));
 
 
 const data1 = { cpu: 6, case: 5, gpu: 10 }
@@ -85,7 +85,7 @@ const setPrice =function(data){
   return count;
 }
 
-console.log(setPrice(data1))
+// console.log(setPrice(data1))
 
 
 
@@ -112,7 +112,7 @@ const mapChildrenProducts_new = function(arr) {
   return components;
 };
 
-console.log(mapChildrenProducts_new(childProducts));
+// console.log(mapChildrenProducts_new(childProducts));
 // console.log(mapChildrenProducts_new(childProducts)[0].itemsList);
 
 var arr = [
@@ -126,9 +126,16 @@ var arr = [
   const mapCityLoction = function(arr) {
     let cities = {};
     arr.forEach((address, index) => {
+        console.log(0, cities);
+
         let locations = cities[address.city] || [];
+        console.log(1, locations,cities);
+        
         locations.push(address.location);
+        console.log(2, locations,cities);
+
         cities[address.city] = locations;
+        console.log(3, locations, cities);
     })
     return cities;
 }
@@ -157,4 +164,4 @@ const mapCityLoction_new = function() {
 
 console.log(mapCityLoction(arr));
 
-console.log(mapCityLoction_new(arr));
+// console.log(mapCityLoction_new(arr));
