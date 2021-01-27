@@ -190,14 +190,25 @@ console.log(others);
 //   console.log('内层还是外层的n呢？',n);
 // }
 
-let number = [1, 2, 3, 4, 5];
+let number = 100;
+const string = "Jay";
 
-let copy = number;
+let obj1 = {
+  value: "a",
+};
 
-let deepCopy = number.slice(0);
+let obj2 = {
+  value: "b",
+};
 
-console.log(number, copy, deepCopy);
+function change() {
+  number = 99;
+  obj1 = obj2;
+  obj2.value = "c";
+}
 
-number[0] = 99;
+change();
 
-console.log(number, copy, deepCopy);
+setTimeout(() => {
+  console.log(number);
+}, 100);
