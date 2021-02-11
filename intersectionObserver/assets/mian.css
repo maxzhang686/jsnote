@@ -1,0 +1,77 @@
+:root {
+  --device-width: 770px;
+  --device-height: 1336px;
+  --ui-width: 640px;
+  font-size: 15px;
+}
+
+body {
+  background-color: #000;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Helvetica;
+  /* padding: 4rem 0; */
+}
+
+#iphone {
+  position: relative;
+  width: var(--device-width);
+  height: var(--device-height);
+}
+
+#ui {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#ui ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  /* --progress: 0; */
+}
+
+#ui ul li img {
+  display: block;
+  width: var(--ui-width);
+  height: auto;
+  margin: 10px auto;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #222;
+
+  /* transform: scale(calc(1.8 - (0.8 * var(--progress))))
+    translateY(calc(-60px * (1 - var(--progress))));
+  opacity: var(--progress); */
+}
+
+.content--title {
+  visibility: visible;
+  animation-name: moveFromBottom;
+  animation-duration: 3s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes moveFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(150px);
+  }
+  80% {
+    transform: translateY(10);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content--title--hide {
+  visibility: hidden;
+}
