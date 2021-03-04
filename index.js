@@ -190,25 +190,5 @@ console.log(others);
 //   console.log('内层还是外层的n呢？',n);
 // }
 
-let number = 100;
-const string = "Jay";
-
-let obj1 = {
-  value: "a",
-};
-
-let obj2 = {
-  value: "b",
-};
-
-function change() {
-  number = 99;
-  obj1 = obj2;
-  obj2.value = "c";
-}
-
-change();
-
-setTimeout(() => {
-  console.log(number);
-}, 100);
+let a = 1;
+console.log(a == true);

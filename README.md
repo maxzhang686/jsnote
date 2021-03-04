@@ -211,6 +211,21 @@ functionName();
 - Build-in function
   alert(), addEventListener(), prompt()
 
+弹窗
+
+#
+
+### 2.7. return
+
+```js
+function functionName(parameter1, parameter2) {
+  const result = parameter1 + parameter2;
+  return result;
+}
+```
+
+Any code that have write after <span style="color: red">`return`</span>, won't execute.
+
 #
 
 ### 2.6. "Indirect" vs "Direct" Function Execution
@@ -258,19 +273,6 @@ alert("Do something else...");
 Why?
 
 Because you just throw the name of the function in there but **you don't give any other information to JavaScript**. It basically doesn't know what to do with that name ("Should I run that when a click occurs? After a certain amount of time? I don't know...") and hence JavaScript kind of ignores this statement.
-
-#
-
-### 2.7. return
-
-```js
-function functionName(parameter1, parameter2) {
-  const result = parameter1 + parameter2;
-  return result;
-}
-```
-
-Any code that have write after <span style="color: red">`return`</span>, won't execute.
 
 #
 
@@ -324,6 +326,8 @@ When referring to <span style="color: red">`userName`</span> inside of the <span
 #
 
 ### 2.9. Converting Data Types
+
+类型(数值)转换
 
 **change the string to number.**
 
@@ -436,6 +440,7 @@ console.log(newObject.name);
 
 ### 2.14. import JS file with "defer" & "async"
 
+插入(引用)JS,
 only for external file
 
 ![find](noteimgs/section1g.png)
@@ -928,6 +933,8 @@ In the new project, **do not** use `var` anymore.
 
 ### 4.2. "Hoisting"
 
+变量提升
+
 ```js
 console.log(name);
 var name = "Max";
@@ -955,7 +962,8 @@ let name = "Max";
 
 **heap and stack** [Link-CN](https://juejin.im/post/5d116a9df265da1bb47d717b)
 
-**primitive vs reference Values**
+**primitive vs reference Values**  
+7 个基本原始类型
 
 - Seven data types that are primitives:  
   Boolean  
