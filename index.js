@@ -190,5 +190,11 @@ console.log(others);
 //   console.log('内层还是外层的n呢？',n);
 // }
 
-let a = 1;
-console.log(a == true);
+// let a = 1;
+// console.log(a == true);
+
+const person = (firstName, lastName) => ({
+  first: firstName,
+  last: lastName,
+});
+console.log(person("Jill", "Wilson"));
